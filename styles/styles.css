@@ -15,8 +15,18 @@ p {
   margin: 0;
 }
 
+a{
+    text-decoration: none;
+}
+
 ul{
     list-style: none;
+}
+
+h1{
+    text-transform: capitalize;
+    font-size: 3.5rem;
+    font-family: "Metropolis Medium", sans-serif;
 }
 
 body {
@@ -34,6 +44,7 @@ html {
   --header-border-color: #ebf2f2;
   --logo-fill-color: #6cb52d;
   --text-color: #111;
+  --bg-light-color: #ebf2f2;
 }
 
 .container {
@@ -45,6 +56,10 @@ html {
 .header {
   background-color: var(--bg-color);
   border-bottom: 1px solid var(--header-border-color);
+}
+
+.navbar{
+    padding: 5px 0;
 }
 
 .logo {
@@ -114,6 +129,7 @@ html {
     border-radius: 3%;
     position: absolute;
     top: 50%;
+    z-index: 1;
 }
 
 .navbar_dropdown_link {
@@ -136,3 +152,39 @@ html {
     display: block;
 }
 
+.main{
+    background: var(--bg-color);
+}
+
+.main_content{
+    padding: 5rem 0;
+}
+
+.main_description{
+    margin-top: 20px;
+    max-width: 960px;
+    padding-bottom: 1rem;
+    font-size: 1.5rem;
+    line-height: 2.2rem;
+    font-weight: 400;
+}
+
+.main_button{
+    border: 2px solid #111;
+    border-radius: 0;
+    font-size: 0.9rem;
+    font-weight: 700;
+    height: auto;
+    line-height: 20px;
+    padding: 15px 30px;
+    position: relative;
+    text-transform: uppercase;
+    transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    background: transparent;
+    text-align: center;
+}
+
+.main_button:hover {
+    background-color: var(--text-color);
+    color: var(--bg-color);
+}
