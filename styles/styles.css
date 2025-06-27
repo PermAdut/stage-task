@@ -45,6 +45,9 @@ p {
 
 body {
   margin: 0;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 img {
   max-width: 60px;
@@ -57,6 +60,9 @@ html {
   font-size: 1em;
   font-family: "Open Sans", sans-serif;
   box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 :root {
@@ -72,6 +78,7 @@ html {
   margin: 0 auto;
   position: relative;
   max-width: 1344px;
+  width: 100%;
 }
 
 .header {
@@ -80,17 +87,17 @@ html {
 }
 
 .navbar {
+  display: flex;
   padding: 5px 0;
 }
 
 .logo {
-  width: 300px;
+  width: 100%;
   fill: #6cb52d;
 }
 
 .navbar_logo {
   display: flex;
-  flex-grow: 1;
 }
 
 .navbar_logo_link {
@@ -99,13 +106,13 @@ html {
 
 .navbar_links {
   display: flex;
-  flex-direction: row;
-  flex-shrink: 0;
+  justify-content: space-between;
 }
 
 .navbar_items {
   display: flex;
   align-items: center;
+  margin-right: -0.75rem;
 }
 
 .navbar_item {
@@ -169,19 +176,36 @@ html {
   transition: all 0.3s ease;
   display: block;
 }
+.navbar_burger{
+    display: none;
+}
+
+.navbar_burger_icon {
+    cursor: pointer;
+    height: 48px;
+    position: relative;
+    transition: 0.4s cubic-bezier(0, 0, 0, 1);
+    user-select: none;
+    width: 48px;
+    outline: none;
+    transform: none;
+}
+
+
+
 
 .main {
   background: var(--bg-light-color);
 }
 
 .main_content {
-  padding: 5rem 0;
+  padding: 5.75rem 0;
 }
 
 .main_description {
   margin-top: 20px;
   max-width: 960px;
-  padding-bottom: 1rem;
+  padding-bottom: 2rem;
   font-size: 1.5rem;
   line-height: 2.2rem;
   font-weight: 400;
@@ -195,9 +219,8 @@ html {
   height: auto;
   line-height: 20px;
   padding: 15px 30px;
-  position: relative;
   text-transform: uppercase;
-  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
   background: transparent;
   text-align: center;
 }
@@ -210,6 +233,7 @@ html {
 .extra_main {
   background: linear-gradient(45deg, #6db33f 26%, #80ea6e 89%);
   height: 6px;
+  margin-top: 3px;
 }
 
 .projects {
@@ -222,21 +246,23 @@ html {
 .projects_items {
   display: flex;
   flex-wrap: wrap;
-  gap: 32px;
-  margin: 0;
-  padding: 0;
+  margin: 0 auto;
+  padding-bottom: 3rem;
+}
+
+.projects_wrap{
+    padding: 0.75rem;
+    width: 33.33%;
+    flex: none;
 }
 
 .projects_link {
     display: flex;
-    flex: 1 1 380px;
-    max-width: 380px;
     flex-direction: column;
     background: #fff;
     border: 1px solid #e5e5e5;
-    border-radius: 12px;
     box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.04);
-    padding: 32px 28px 28px 28px;
+    padding: 25px 20px 30px;
     transition: box-shadow 0.2s, border 0.2s, transform 0.2s ease-in-out;
     text-decoration: none;
     position: relative;
@@ -258,18 +284,12 @@ html {
 
 .projects_title {
   display: flex;
-  align-items: flex-start;
-  margin-bottom: 18px;
 }
 
 .projects_image {
   width: 60px;
   height: 40px;
-  margin-right: 18px;
-  flex-shrink: 0;
   display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .projects_image img {
@@ -281,6 +301,7 @@ html {
 
 .projects_info {
   display: flex;
+  align-items: center;
 }
 
 .projects_info h3 {
@@ -293,32 +314,67 @@ html {
   color: var(--text-color);
   font-size: 0.75rem;
   font-weight: 700;
-  border-radius: 5px;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
+  border-radius: 4px;
+  padding-left: 0.75em;
+  padding-right: 0.75em;
   line-height: 1.5;
   height: 2em;
-  display: flex;
+  display: inline-flex;
   align-items: center;
+  justify-content: center;
+  vertical-align: middle;
 }
+
+.projects_version_text {
+    margin-left: 0.5rem;
+    font-size: 0.75rem;
+}
+
 
 .projects_desc {
   font-size: 1rem;
   color: #61717d;
-  margin-bottom: 24px;
-  margin-top: 0;
-  padding: 0;
+}
+
+.projects_desc p {
+  padding-bottom: 0.75rem;
+  padding-top: 0.75rem;
+  line-height: 1.7;
 }
 
 .projects_versions {
   display: flex;
   align-items: center;
-  padding-top: 8px;
 }
 
 .projects_version_text {
   font-size: 0.75rem;
   color: #61717d;
-  margin-left: 10px;
   line-height: 1.7rem;
+}
+
+
+@media screen and (max-width: 1000px) {
+    .container{
+        padding: 0 2rem;
+    }
+}
+
+@media screen and (max-width: 800px) {
+
+    .projects_wrap {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .navbar_items{
+        display: none;
+    }
+    .navbar_burger{
+        display: block;
+        cursor: pointer;
+        margin-left: auto;
+        margin-right: 1rem;
+    }
 }
