@@ -305,12 +305,14 @@ html {
   width: 60px;
   height: 40px;
   display: flex;
+  padding-right: 10px;
 }
 
 .projects_image img {
+  display: block;
   max-width: 60px;
   max-height: 40px;
-  width: auto;
+  width: 100%;
   height: auto;
 }
 
