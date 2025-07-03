@@ -384,6 +384,28 @@ html {
   line-height: 1.7rem;
 }
 
+.projects_search_wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.projects_search {
+  width: 100%;
+  max-width: 500px;
+  height: 40px;
+  border-radius: 4px;
+  border: 5px solid #191e1e;
+  font-size: 1rem;
+}
+
+.projects_no_data{
+  margin: 0 auto;
+  font-size: 2rem;
+  font-weight: 800;
+  color: red;
+}
+
 .navbar_burger_active {
   display: block;
 }
