@@ -1,4 +1,4 @@
-import { projectArray } from "./constants.js"
+import { projectArray } from './constants.js'
 const projectsItems = document.querySelector('.projects_items')
 projectsItems.innerHTML = `${projectArray
   .map(

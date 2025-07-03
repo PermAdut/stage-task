@@ -21,6 +21,7 @@ a {
 
 ul {
   list-style: none;
+  padding: 0;
 }
 
 h1 {
@@ -179,6 +180,7 @@ html {
 
 .navbar_burger {
   display: none;
+  z-index: 99999;
 }
 
 .navbar_burger_icon {
@@ -203,6 +205,19 @@ html {
   transition: 0.4s cubic-bezier(0, 0, 0, 1);
   transform: none;
   width: 24px;
+}
+
+.navbar_wrapper {
+  display: none;
+  height: 100%;
+  background: #191e1e;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .main {
@@ -367,6 +382,87 @@ html {
   font-size: 0.75rem;
   color: #61717d;
   line-height: 1.7rem;
+}
+
+.navbar_burger_active {
+  display: block;
+}
+
+.navbar_wrapper_active {
+  display: block;
+}
+.navbar_burger_line_active {
+  background: var(--bg-color);
+}
+.navbar_burger_line_active:first-child {
+  transform: rotate(45deg);
+  margin: 0;
+}
+.navbar_burger_line_active:nth-child(2) {
+  transform: rotate(-45deg);
+  margin-top: -9px;
+}
+.navbar_burger_line_active:last-child {
+  display: none;
+}
+
+.navbar_subitems {
+  padding: 3rem;
+}
+
+.navbar_subitem {
+  position: relative;
+  margin: 1rem 0;
+}
+
+.navbar_subitem_title {
+  display: block;
+  color: var(--bg-color);
+  text-transform: capitalize;
+  font-size: 2rem;
+  font-weight: 400;
+  min-height: 60px;
+  border-bottom: 1px solid hsla(0, 0%, 100%, 0.4);
+}
+
+.navbar_subitem_title:hover {
+  color: var(--logo-fill-color);
+}
+
+.navbar_subitem_title::after {
+  border: solid #98afae;
+  border-width: 0 2px 2px 0;
+  content: ' ';
+  display: block;
+  height: 15px;
+  position: absolute;
+  right: 15px;
+  top: 20px;
+  transform: rotate(-135deg) translate(5px, 15px) scale(-1);
+  transition: transform 0.2s ease-out;
+  width: 15px;
+}
+.navbar_subitem_title:last-child::after {
+  display: none;
+}
+
+.navbar_subitem_links {
+  display: none;
+}
+
+.navbar_subitem_link {
+  color: #98afae;
+  font-size: 1.2rem;
+  padding: 0.2rem 0;
+  line-height: 1.5;
+}
+
+.navbar_subitem_link:hover {
+  color: var(--logo-fill-color);
+}
+
+.navbar_subitem_title_active::after {
+  transform: rotate(-135deg) translate(5px, 15px) scale(1);
 }
 
 @media screen and (max-width: 1000px) {
