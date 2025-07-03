@@ -1,9 +1,8 @@
 import { projectArray } from './constants.js'
 const inputSearch = document.getElementById('projects_search')
 
-
-Function.prototype.debounce = function(delay){
-  const func = this;
+Function.prototype.debounce = function (delay) {
+  const func = this
   return function (...args) {
     const context = this
     clearTimeout(this.timeout)
@@ -12,6 +11,7 @@ Function.prototype.debounce = function(delay){
 }
 
 function handleSearch(event) {
+  event.preventDefault()
   const searchValue = event.target.value.toLowerCase()
   const projectsItems = document.querySelector('.projects_items')
   const searchResult = projectArray
