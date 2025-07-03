@@ -12,6 +12,7 @@
       href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
       rel="stylesheet"
     />
+    <script type="module" src="./scripts/constants.js"></script>
   </head>
   <body>
     <header class="header">
@@ -66,7 +67,7 @@
             </div>
             <div class="navbar_items">
               <div class="navbar_link">
-                <span class="navbar_item arrow">why spring</span>
+                <span class="navbar_item arrow"></span>
                 <ul class="navbar_dropdown_content">
                   <li>
                     <a class="navbar_dropdown_link" href="#">Overview</a>
@@ -94,7 +95,7 @@
                 </ul>
               </div>
               <div class="navbar_link">
-                <span class="navbar_item arrow">learn</span>
+                <span class="navbar_item arrow"></span>
                 <ul class="navbar_dropdown_content">
                   <li>
                     <a class="navbar_dropdown_link" href="#">Overview</a>
@@ -114,7 +115,7 @@
                 </ul>
               </div>
               <div class="navbar_link">
-                <span class="navbar_item arrow">projects</span>
+                <span class="navbar_item arrow"></span>
                 <ul class="navbar_dropdown_content">
                   <li>
                     <a class="navbar_dropdown_link" href="#">Overview</a>
@@ -174,7 +175,7 @@
                 </ul>
               </div>
               <div class="navbar_link">
-                <span class="navbar_item arrow">academy</span>
+                <span class="navbar_item arrow"></span>
                 <ul class="navbar_dropdown_content">
                   <li>
                     <a class="navbar_dropdown_link" href="#">Courses</a>
@@ -185,7 +186,7 @@
                 </ul>
               </div>
               <div class="navbar_link">
-                <span class="navbar_item arrow">community</span>
+                <span class="navbar_item arrow"></span>
                 <ul class="navbar_dropdown_content">
                   <li>
                     <a class="navbar_dropdown_link" href="#">Overview</a>
@@ -197,15 +198,153 @@
                 </ul>
               </div>
               <div class="navbar_link">
-                <span class="navbar_item">tanzu spring</span>
+                <span class="navbar_item"></span>
               </div>
             </div>
-            <div class="navbar_burger">
-              <div class="navbar_burger_icon">
-                <div class="navbar_burger_line"></div>
-                <div class="navbar_burger_line"></div>
-                <div class="navbar_burger_line"></div>
-              </div>
+          </div>
+        </div>
+        <div class="navbar_burger">
+          <div class="navbar_burger_icon">
+            <div class="navbar_burger_line"></div>
+            <div class="navbar_burger_line"></div>
+            <div class="navbar_burger_line"></div>
+          </div>
+        </div>
+        <div class="navbar_wrapper">
+          <div class="navbar_subitems">
+            <div class="navbar_subitem">
+              <span class="navbar_subitem_title"></span>
+              <ul class="navbar_subitem_links">
+                <li>
+                  <a class="navbar_subitem_link" href="#">Overview</a>
+                </li>
+                <li>
+                  <a class="navbar_subitem_link" href="#">Generative AI</a>
+                </li>
+                <li>
+                  <a class="navbar_subitem_link" href="#">Microservices</a>
+                </li>
+                <li>
+                  <a class="navbar_subitem_link" href="#">Reactive</a>
+                </li>
+                <li>
+                  <a class="navbar_subitem_link" href="#">Event Driven</a>
+                </li>
+                <li>
+                  <a class="navbar_subitem_link" href="#">Cloud</a>
+                </li>
+                <li>
+                  <a class="navbar_subitem_link" href="#">Web Applications</a>
+                </li>
+                <li>
+                  <a class="navbar_subitem_link" href="#">Serverless</a>
+                </li>
+                <li>
+                  <a class="navbar_subitem_link" href="#">Batch</a>
+                </li>
+              </ul>
+            </div>
+            <div class="navbar_subitem">
+              <span class="navbar_subitem_title"></span>
+              <ul class="navbar_subitem_links">
+                <li>
+                  <a class="navbar_subitem_link" href="#">Overview</a>
+                </li>
+                <li>
+                  <a class="navbar_subitem_link" href="#">Quickstart</a>
+                </li>
+                <li>
+                  <a class="navbar_subitem_link" href="#">Guides</a>
+                </li>
+                <li>
+                  <a class="navbar_subitem_link" href="#">Blog</a>
+                </li>
+                <li>
+                  <a class="navbar_subitem_link" href="#">Security Advisores</a>
+                </li>
+              </ul>
+            </div>
+            <div class="navbar_subitem">
+              <span class="navbar_subitem_title"></span>
+              <ul class="navbar_subitem_links">
+                <li>
+                  <a class="navbar_subitem_link" href="#">Overview</a>
+                </li>
+                <li>
+                  <a class="navbar_subitem_link" href="#">Spring Boot</a>
+                </li>
+                <li>
+                  <a class="navbar_subitem_link" href="#">Spring Framework</a>
+                </li>
+                <li>
+                  <a class="navbar_subitem_link" href="#">Spring Cloud</a>
+                </li>
+                <li>
+                  <a class="navbar_subitem_link" href="#"
+                    >Spring Cloud Data Flow</a
+                  >
+                </li>
+                <li>
+                  <a class="navbar_subitem_link" href="#">Spring Data</a>
+                </li>
+                <li>
+                  <a class="navbar_subitem_link" href="#">Spring Integration</a>
+                </li>
+                <li>
+                  <a class="navbar_subitem_link" href="#">Spring Batch</a>
+                </li>
+                <li>
+                  <a class="navbar_subitem_link" href="#">Spring Security</a>
+                </li>
+                <li style="margin-bottom: 24px">
+                  <a class="navbar_subitem_link" href="#">Spring AI</a>
+                </li>
+                <li>
+                  <a class="navbar_subitem_link" href="#">Release Calendar</a>
+                </li>
+                <li style="margin-bottom: 24px">
+                  <a class="navbar_subitem_link" href="#"
+                    >Security advisories</a
+                  >
+                </li>
+                <li>
+                  <div class="navbar_subitem_link">DEVELOPMENT TOOLS</div>
+                </li>
+                <li>
+                  <a class="navbar_subitem_link" href="#">Spring Tools</a>
+                </li>
+                <li>
+                  <a class="navbar_subitem_link" href="#">Spring Initializr</a>
+                </li>
+              </ul>
+            </div>
+            <div class="navbar_subitem">
+              <span class="navbar_subitem_title"></span>
+              <ul class="navbar_subitem_links">
+                <li>
+                  <a class="navbar_subitem_link" href="#">Courses</a>
+                </li>
+                <li>
+                  <a class="navbar_subitem_link" href="#">Get Certified</a>
+                </li>
+              </ul>
+            </div>
+            <div class="navbar_subitem">
+              <span class="navbar_subitem_title"></span>
+              <ul class="navbar_subitem_links">
+                <li>
+                  <a class="navbar_subitem_link" href="#">Overview</a>
+                </li>
+                <li>
+                  <a class="navbar_subitem_link" href="#">Events</a>
+                </li>
+                <li>
+                  <a class="navbar_subitem_link" href="#">Authors</a>
+                </li>
+              </ul>
+            </div>
+            <div class="navbar_subitem">
+              <span class="navbar_subitem_title"></span>
             </div>
           </div>
         </div>
@@ -228,159 +367,21 @@
     </section>
     <section class="projects">
       <div class="container">
-        <div class="projects_items">
-          <article class="projects_wrap">
-            <a class="projects_link" href="#">
-              <div class="projects_item">
-                <div class="projects_title">
-                  <div class="projects_image">
-                    <img src="./images/spring-boot.svg" alt="spring boot" />
-                  </div>
-                  <div class="projects_info">
-                    <h3>spring boot</h3>
-                  </div>
-                </div>
-                <div class="projects_desc">
-                  <p>
-                    Takes an opinionated view of building Spring applications
-                    and gets you up and running as quickly as possible.
-                  </p>
-                  <div class="projects_versions">
-                    <span class="projects_version">3.5.3</span>
-                    <span class="projects_version_text">+ 9 versions</span>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </article>
-          <article class="projects_wrap">
-            <a class="projects_link" href="#">
-              <div class="projects_item">
-                <div class="projects_title">
-                  <div class="projects_image">
-                    <img
-                      src="./images/spring-framework.svg"
-                      alt="spring boot"
-                    />
-                  </div>
-                  <div class="projects_info">
-                    <h3>spring framework</h3>
-                  </div>
-                </div>
-                <div class="projects_desc">
-                  <p>
-                    Provides core support for dependency injection, transaction
-                    management, web apps, data access, messaging, and more.
-                  </p>
-                </div>
-                <div class="projects_versions">
-                  <span class="projects_version">6.2.8</span>
-                  <span class="projects_version_text">+ 8 versions</span>
-                </div>
-              </div>
-            </a>
-          </article>
-          <article class="projects_wrap">
-            <a class="projects_link" href="#">
-              <div class="projects_item">
-                <div class="projects_title">
-                  <div class="projects_image">
-                    <img src="./images/spring-data.svg" alt="spring boot" />
-                  </div>
-                  <div class="projects_info">
-                    <h3>spring data</h3>
-                  </div>
-                </div>
-                <div class="projects_desc">
-                  <p>
-                    Provides a consistent approach to data access – relational,
-                    non-relational, map-reduce, and beyond.
-                  </p>
-                </div>
-                <div class="projects_versions">
-                  <span class="projects_version">2025.0.1</span>
-                  <span class="projects_version_text">+ 6 versions</span>
-                </div>
-              </div>
-            </a>
-          </article>
-          <article class="projects_wrap">
-            <a class="projects_link" href="#">
-              <div class="projects_item">
-                <div class="projects_title">
-                  <div class="projects_image">
-                    <img src="./images/spring-cloud.svg" alt="spring boot" />
-                  </div>
-                  <div class="projects_info">
-                    <h3>spring cloud</h3>
-                  </div>
-                </div>
-                <div class="projects_desc">
-                  <p>
-                    Provides a set of tools for common patterns in distributed
-                    systems. Useful for building and deploying microservices.
-                  </p>
-                </div>
-                <div class="projects_versions">
-                  <span class="projects_version">2025.0.0</span>
-                  <span class="projects_version_text">+ 9 versions</span>
-                </div>
-              </div>
-            </a>
-          </article>
-          <article class="projects_wrap">
-            <a class="projects_link" href="#">
-              <div class="projects_item">
-                <div class="projects_title">
-                  <div class="projects_image">
-                    <img
-                      src="./images/spring-data-flow.svg"
-                      alt="spring boot"
-                    />
-                  </div>
-                  <div class="projects_info">
-                    <h3>spring cloud data flow</h3>
-                  </div>
-                </div>
-                <div class="projects_desc">
-                  <p>
-                    Provides an orchestration service for composable data
-                    microservice applications on modern runtimes.
-                  </p>
-                </div>
-                <div class="projects_versions">
-                  <span class="projects_version">2.11.15</span>
-                  <span class="projects_version_text">+ 7 versions</span>
-                </div>
-              </div>
-            </a>
-          </article>
-          <article class="projects_wrap">
-            <a class="projects_link" href="#">
-              <div class="projects_item">
-                <div class="projects_title">
-                  <div class="projects_image">
-                    <img src="./images/spring-security.svg" alt="spring boot" />
-                  </div>
-                  <div class="projects_info">
-                    <h3>spring security</h3>
-                  </div>
-                </div>
-                <div class="projects_desc">
-                  <p>
-                    Protects your application with comprehensive and extensible
-                    authentication and authorization support.
-                  </p>
-                </div>
-                <div class="projects_versions">
-                  <span class="projects_version">6.5.1</span>
-                  <span class="projects_version_text">+ 10 versions</span>
-                </div>
-              </div>
-            </a>
-          </article>
+        <div class="projects_search_wrapper">
+          <input
+            name="projects_search"
+            id="projects_search"
+            autocomplete="off"
+            type="text"
+            class="projects_search"
+            placeholder="Search projects"
+          />
         </div>
+        <div class="projects_items"></div>
       </div>
     </section>
   </body>
+  <script type="module" src="./scripts/navbar.js"></script>
+  <script type="module" src="./scripts/project.js"></script>
+  <script type="module" src="./scripts/search.js"></script>
 </html>
