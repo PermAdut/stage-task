@@ -1,24 +1,24 @@
-import { projectArray } from './constants.js'
-const inputSearch = document.getElementById('projects_search')
+import { projectArray } from "./constants.js";
+const inputSearch = document.getElementById("projects_search");
 
 Function.prototype.debounce = function (delay) {
-  const func = this
+  const func = this;
   return function (...args) {
-    const context = this
-    clearTimeout(this.timeout)
-    func.timeout = setTimeout(() => func.apply(context, args), delay)
-  }
-}
+    const context = this;
+    clearTimeout(this.timeout);
+    func.timeout = setTimeout(() => func.apply(context, args), delay);
+  };
+};
 
 function handleSearch(event) {
-  event.preventDefault()
-  const searchValue = event.target.value.toLowerCase()
-  const projectsItems = document.querySelector('.projects_items')
+  event.preventDefault();
+  const searchValue = event.target.value.toLowerCase();
+  const projectsItems = document.querySelector(".projects_items");
   const searchResult = projectArray
     .filter(
       (el) =>
         el.title.toLowerCase().includes(searchValue) ||
-        el.description.toLowerCase().includes(searchValue)
+        el.description.toLowerCase().includes(searchValue),
     )
     .map(
       (el) =>
@@ -44,9 +44,9 @@ function handleSearch(event) {
                 </div>
             </div>
             </a>
-        </article>`
-    )
-  projectsItems.innerHTML = `${searchResult.length > 0 ? searchResult.join('') : "<div class='projects_no_data'>No results</div>"}`
+        </article>`,
+    );
+  projectsItems.innerHTML = `${searchResult.length > 0 ? searchResult.join("") : "<div class='projects_no_data'>No results</div>"}`;
 }
 
-inputSearch.addEventListener('input', handleSearch.debounce(300))
+inputSearch.addEventListener("input", handleSearch.debounce(300));

@@ -1,0 +1,16 @@
+@media screen and (max-width: 900px) {
+  .navbar_margin {
+    margin-bottom: 24px;
+  }
+
+  .navbar_subitem_link {
+    color: #98afae;
+    font-size: 1.2rem;
+    padding: 0.2rem 0;
+    line-height: 1.5;
+  }
+
+  .navbar_subitem_link:hover {
+    color: var(--logo-fill-color);
+  }
+}

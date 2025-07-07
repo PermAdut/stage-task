@@ -27,13 +27,13 @@ ul {
 h1 {
   text-transform: capitalize;
   font-size: 3.5rem;
-  font-family: 'Metropolis Medium', sans-serif;
+  font-family: "Metropolis Medium", sans-serif;
 }
 
 h3 {
   text-transform: capitalize;
   font-size: 1.5rem;
-  font-family: 'Metropolis Medium', sans-serif;
+  font-family: "Metropolis Medium", sans-serif;
   font-weight: 400;
 }
 
@@ -59,7 +59,7 @@ img {
 
 html {
   font-size: 1em;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   box-sizing: border-box;
   width: 100%;
   max-width: 100%;
@@ -80,4 +80,10 @@ html {
   position: relative;
   max-width: 1344px;
   width: 100%;
+}
+
+@media screen and (max-width: 1000px) {
+  .container {
+    padding: 0 2rem;
+  }
 }

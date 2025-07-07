@@ -1,5 +1,5 @@
-import { projectArray } from './constants.js'
-const projectsItems = document.querySelector('.projects_items')
+import { projectArray } from "./constants.js";
+const projectsItems = document.querySelector(".projects_items");
 projectsItems.innerHTML = `${projectArray
   .map(
     (el) =>
@@ -25,6 +25,6 @@ projectsItems.innerHTML = `${projectArray
                 </div>
               </div>
             </a>
-          </article>`
+          </article>`,
   )
-  .join('')}`
+  .join("")}`;
