@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { Project } from "../ProjectItem/ProjectItemTypes";
+import type { Project } from "../ProjectItem/ProjectItem";
 import ProjectItem from "../ProjectItem/ProjectItem";
 import ProjectsInput from "../ProjectsInput/ProjectsInput";
 import styles from "./Projects.module.css";

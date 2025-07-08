@@ -1,6 +1,10 @@
 import useDebounce from "../../../hooks/useDebounce";
-import type { ProjectInputProps } from "./ProjectInputTypes";
+import type { Project } from "../ProjectItem/ProjectItem";
 import styles from "./ProjectsInput.module.css";
+export type ProjectInputProps = {
+  initialProjects: Project[];
+  searchProjects: (projects: Project[]) => void;
+};
 const ProjectsInput = (props: ProjectInputProps) => {
   function handleSearch(event: React.ChangeEvent<HTMLInputElement>) {
     const searchValue = event.target.value.toLowerCase();
@@ -11,7 +15,9 @@ const ProjectsInput = (props: ProjectInputProps) => {
     );
     props.searchProjects(filteredProjects);
   }
-  const debouncedSearch = useDebounce<(event: React.ChangeEvent<HTMLInputElement>) => void>(handleSearch, 300);
+  const debouncedSearch = useDebounce<
+    (event: React.ChangeEvent<HTMLInputElement>) => void
+  >(handleSearch, 300);
   return (
     <div className={styles.projects_search_wrapper}>
       <input
