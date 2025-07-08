@@ -8,4 +8,5 @@ export type SubMenuObject = {
   text: string;
   isLink: boolean;
   isMargin: boolean;
+  extraContent?: string;
 };

@@ -44,7 +44,12 @@ export default function useNavbar() {
         { text: "Security advisories", isLink: true, isMargin: true },
         { text: "DEVELOPMENT TOOLS", isLink: false, isMargin: false },
         { text: "Spring Tools", isLink: true, isMargin: false },
-        { text: "Spring Initializr", isLink: true, isMargin: false },
+        {
+          text: "Spring Initializr",
+          isLink: true,
+          isMargin: false,
+          extraContent: "../../../assets/images/ReactItems/ExtraSvg.tsx",
+        },
       ],
     },
     {

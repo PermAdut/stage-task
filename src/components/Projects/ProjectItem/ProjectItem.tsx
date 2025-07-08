@@ -29,7 +29,7 @@ const ProjectItem = (props: Project) => {
                 <SVGComponent />
               </Suspense>
             </div>
-            <div className={styles.info}>
+            <div className={styles.projects_info}>
               <h3>{props.title}</h3>
             </div>
           </div>

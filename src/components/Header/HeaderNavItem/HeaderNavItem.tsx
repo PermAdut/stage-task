@@ -1,6 +1,11 @@
 import styles from "./HeaderNavItem.module.css";
 import classNames from "classnames";
-import { type HeaderNavItemProps } from "./HeaderNavItemTypes";
+import type {
+  NavBarItem,
+  SubMenuObject,
+} from "../../../constants/Navbar.constants";
+import ExtraSvg from "../../../assets/images/ReactItems/ExtraSvg";
+type HeaderNavItemProps = NavBarItem;
 const HeaderNavItem = (props: HeaderNavItemProps) => {
   return (
     <div className={styles.navbar_link}>
@@ -16,11 +21,10 @@ const HeaderNavItem = (props: HeaderNavItemProps) => {
           {props.subMenuObjects.map((el) => (
             <LinkObject
               key={el.text}
-              el={{
-                isMargin: el.isMargin,
-                isLink: el.isLink,
-                text: el.text,
-              }}
+              text={el.text}
+              isLink={el.isLink}
+              isMargin={el.isMargin}
+              extraContent={el?.extraContent}
             />
           ))}
         </ul>
@@ -28,17 +32,14 @@ const HeaderNavItem = (props: HeaderNavItemProps) => {
     </div>
   );
 };
+type LinkObjectProps = SubMenuObject;
 
-const LinkObject = ({
-  el,
-}: {
-  el: { isMargin: boolean; isLink: boolean; text: string };
-}) => {
+const LinkObject = (el: LinkObjectProps) => {
   return (
     <li className={el.isMargin ? styles.navbar_margin : ""}>
       {el.isLink ? (
         <a className={styles.navbar_dropdown_link} href="#">
-          {el.text}
+          {el.text} {el.extraContent && <ExtraSvg />}
         </a>
       ) : (
         <div>{el.text}</div>
