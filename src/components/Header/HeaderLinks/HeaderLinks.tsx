@@ -2,9 +2,9 @@ import HeaderLogo from "../HeaderLogo/HeaderLogo";
 import styles from "./HeaderLinks.module.css";
 import HeaderNavItem from "../HeaderNavItem/HeaderNavItem";
 import useNavbar from "../../../hooks/useNavbar";
-import type { HeaderLinksProps } from "./HeaderLinkTypes";
+
 const HeaderLinks = () => {
-  const items = useNavbar<HeaderLinksProps>();
+  const items = useNavbar();
   return (
     <div className={styles.navbar_links}>
       <HeaderLogo />

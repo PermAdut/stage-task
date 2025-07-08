@@ -1,23 +1,31 @@
+import { useState } from "react";
 import useNavbar from "../../../hooks/useNavbar";
 import ActiveHeaderSubItem from "../HeaderWrapperSubItem/ActiveSubItem/ActiveHeaderSubItem";
 import UnactiveHeaderSubitem from "../HeaderWrapperSubItem/UnactiveSubItem/UnactiveHeaderSubItem";
 import styles from "./HeaderWrapper.module.css";
-import type { HeaderWrapperProps } from "./HeaderWrapperTypes";
+
 const HeaderWrapper = () => {
-  const items = useNavbar<HeaderWrapperProps>();
+  const [activeTab, setActiveTab] = useState<number | null>(null);
+  const handleActiveTab = (index:number) => {
+    if(activeTab && activeTab === index){
+      setActiveTab(null);
+    } else {
+      setActiveTab(index)
+    }
+  }
+  const items = useNavbar();
   return (
     <div className={styles.navbar_wrapper}>
       <div className={styles.navbar_subitems}>
         {items &&
           items.length > 0 &&
           items.map((el, index) =>
-            el.isActive ? (
+            index === activeTab ? (
               <ActiveHeaderSubItem
                 key={index}
                 title={el.title}
                 isArrow={el.isArrow}
-                isActive={el.isActive}
-                handleMakeActive={el.handleMakeActive}
+                handleActiveTab={() => {handleActiveTab(index)}}
                 displayedSubItems={el.subMenuObjects}
               />
             ) : (
@@ -25,8 +33,7 @@ const HeaderWrapper = () => {
                 key={index}
                 title={el.title}
                 isArrow={el.isArrow}
-                isActive={el.isActive}
-                handleMakeActive={el.handleMakeActive}
+                handleActiveTab={() => {handleActiveTab(index)}}
               />
             ),
           )}

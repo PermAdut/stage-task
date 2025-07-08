@@ -1,4 +1,41 @@
 @media screen and (max-width: 900px) {
+  .navbar_subitem {
+    position: relative;
+    margin: 1rem 0;
+  }
+
+  .navbar_subitem_title {
+    display: block;
+    color: var(--bg-color);
+    text-transform: capitalize;
+    font-size: 2rem;
+    font-weight: 400;
+    min-height: 60px;
+    border-bottom: 1px solid hsla(0, 0%, 100%, 0.4);
+  }
+
+  .navbar_subitem_title:hover {
+    color: var(--logo-fill-color);
+  }
+
+  .arrow::after {
+    border: solid #98afae;
+    border-width: 0 2px 2px 0;
+    content: " ";
+    display: block;
+    height: 15px;
+    position: absolute;
+    right: 15px;
+    top: 20px;
+    transform: rotate(-135deg) translate(5px, 15px) scale(-1);
+    transition: transform 0.2s ease-out;
+    width: 15px;
+  }
+
+  .arrow_active::after {
+    transform: rotate(-135deg) translate(5px, 15px) scale(1);
+  }
+
   .navbar_margin {
     margin-bottom: 24px;
   }
@@ -14,3 +51,4 @@
     color: var(--logo-fill-color);
   }
 }
+

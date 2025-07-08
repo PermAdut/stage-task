@@ -1,31 +1,8 @@
 import { useState } from "react";
+import type { NavBarItem } from "../constants/Navbar.constants";
 
-export interface NavBarItem {
-  title: string;
-  isArrow: boolean;
-  subMenuObjects?: SubMenuObject[];
-  isActive: boolean;
-  handleMakeActive: (title: string) => void;
-}
-
-interface SubMenuObject {
-  text: string;
-  isLink: boolean;
-  isMargin: boolean;
-}
-
-export default function useNavbar<
-  T extends Pick<NavBarItem, "title" | "isArrow" | "subMenuObjects">[],
->() {
-  const makeActive = (title: string) => {
-    setNavbarItems((prevItems) =>
-      prevItems.map((item) => ({
-        ...item,
-        isActive: item.title === title ? !item.isActive : false,
-      })),
-    );
-  };
-  const [navbarItems, setNavbarItems] = useState<NavBarItem[]>([
+export default function useNavbar() {
+  const [navbarItems, _setNavbarItems] = useState<NavBarItem[]>([
     {
       title: "why spring",
       isArrow: true,
@@ -37,8 +14,6 @@ export default function useNavbar<
         { text: "Event Driven", isLink: true, isMargin: false },
         { text: "Cloud", isLink: true, isMargin: false },
       ],
-      isActive: false,
-      handleMakeActive: makeActive,
     },
     {
       title: "learn",
@@ -50,8 +25,6 @@ export default function useNavbar<
         { text: "Blog", isLink: true, isMargin: false },
         { text: "Security Advisores", isLink: true, isMargin: false },
       ],
-      isActive: false,
-      handleMakeActive: makeActive,
     },
     {
       title: "projects",
@@ -73,8 +46,6 @@ export default function useNavbar<
         { text: "Spring Tools", isLink: true, isMargin: false },
         { text: "Spring Initializr", isLink: true, isMargin: false },
       ],
-      isActive: false,
-      handleMakeActive: makeActive,
     },
     {
       title: "academy",
@@ -83,8 +54,6 @@ export default function useNavbar<
         { text: "Courses", isLink: true, isMargin: false },
         { text: "Get Certified", isLink: true, isMargin: false },
       ],
-      isActive: false,
-      handleMakeActive: makeActive,
     },
     {
       title: "community",
@@ -94,16 +63,12 @@ export default function useNavbar<
         { text: "Events", isLink: true, isMargin: false },
         { text: "Authors", isLink: true, isMargin: false },
       ],
-      isActive: false,
-      handleMakeActive: makeActive,
     },
     {
       title: "tanzu spring",
       isArrow: false,
       subMenuObjects: undefined,
-      isActive: false,
-      handleMakeActive: makeActive,
     },
   ]);
-  return navbarItems as unknown as T;
+  return navbarItems;
 }

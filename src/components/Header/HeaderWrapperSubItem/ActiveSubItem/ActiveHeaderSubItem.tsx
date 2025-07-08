@@ -1,15 +1,21 @@
-import UnactiveHeaderSubItem from "../UnactiveSubItem/UnactiveHeaderSubItem";
-import type { ActiveSubItemProps } from "./ActiveHeaderSubItemTypes";
+import classNames from "classnames";
 import styles from "./ActiveHeaderSubItem.module.css";
+import type { NavBarItem, SubMenuObject } from "../../../../constants/Navbar.constants";
+type ActiveSubItemProps = NavBarItem & {
+  displayedSubItems?: SubMenuObject[];
+  handleActiveTab: () => void;
+}
+
 const ActiveHeaderSubItem = (props: ActiveSubItemProps) => {
   return (
     <>
-      <UnactiveHeaderSubItem
+      <div className={styles.navbar_subitem}>
+      <DisplayedItem
         title={props.title}
         isArrow={props.isArrow}
-        isActive={props.isActive}
-        handleMakeActive={props.handleMakeActive}
+        handleActiveTab={props.handleActiveTab}
       />
+    </div>
       {props.displayedSubItems && props.displayedSubItems.length > 0 && (
         <ul className={styles.navbar_subitem_links}>
           {props.displayedSubItems.map((el, index) => (
@@ -18,6 +24,19 @@ const ActiveHeaderSubItem = (props: ActiveSubItemProps) => {
         </ul>
       )}
     </>
+  );
+};
+
+const DisplayedItem = (el:Omit<ActiveSubItemProps,'displayedSubItems'>) => {
+  return (
+    <span onClick={el.handleActiveTab}
+      className={classNames(styles.navbar_subitem_title, {
+        [styles.arrow]: el.isArrow,
+        [styles.arrow_active]: el.isArrow,
+      })}
+    >
+      {el.title}
+    </span>
   );
 };
 
