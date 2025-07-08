@@ -1,6 +1,9 @@
 import styles from "./HeaderNavBurger.module.css";
-import type { HeaderBurgerProps } from "./HeaderNavBurgerTypes";
 import classNames from "classnames";
+type HeaderBurgerProps = {
+  handleIsOpen: () => void;
+  isOpen: boolean;
+};
 const HeaderNavBurger = (props: HeaderBurgerProps) => {
   return (
     <>

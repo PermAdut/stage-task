@@ -1,5 +1,5 @@
 import { useState } from "react";
-import useNavbar from "../../../hooks/useNavbar";
+import {navbarItems} from "../../../constants/Navbar.constants";
 import ActiveHeaderSubItem from "../HeaderWrapperSubItem/ActiveSubItem/ActiveHeaderSubItem";
 import UnactiveHeaderSubitem from "../HeaderWrapperSubItem/UnactiveSubItem/UnactiveHeaderSubItem";
 import styles from "./HeaderWrapper.module.css";
@@ -13,13 +13,11 @@ const HeaderWrapper = () => {
       setActiveTab(index);
     }
   };
-  const items = useNavbar();
   return ReactDOM.createPortal(
     <div className={styles.navbar_wrapper}>
       <div className={styles.navbar_subitems}>
-        {items &&
-          items.length > 0 &&
-          items.map((el, index) =>
+        {navbarItems.length > 0 &&
+          navbarItems.map((el, index) =>
             index === activeTab ? (
               <ActiveHeaderSubItem
                 key={index}
