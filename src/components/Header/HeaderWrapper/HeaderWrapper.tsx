@@ -7,7 +7,7 @@ import styles from "./HeaderWrapper.module.css";
 const HeaderWrapper = () => {
   const [activeTab, setActiveTab] = useState<number | null>(null);
   const handleActiveTab = (index:number) => {
-    if(activeTab && activeTab === index){
+    if(activeTab != null && activeTab === index){
       setActiveTab(null);
     } else {
       setActiveTab(index)
