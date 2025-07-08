@@ -163,6 +163,7 @@ html {
   padding-right: 3rem;
   text-decoration: none;
   color: var(--text-color);
+  cursor: pointer;
 }
 
 .navbar_dropdown_content li {
@@ -186,7 +187,6 @@ html {
 .navbar_burger_icon {
   cursor: pointer;
   height: 48px;
-  position: relative;
   transition: 0.4s cubic-bezier(0, 0, 0, 1);
   user-select: none;
   width: 48px;
@@ -451,27 +451,6 @@ html {
   color: var(--logo-fill-color);
 }
 
-.navbar_subitem_title::after {
-  border: solid #98afae;
-  border-width: 0 2px 2px 0;
-  content: ' ';
-  display: block;
-  height: 15px;
-  position: absolute;
-  right: 15px;
-  top: 20px;
-  transform: rotate(-135deg) translate(5px, 15px) scale(-1);
-  transition: transform 0.2s ease-out;
-  width: 15px;
-}
-.navbar_subitem_title:last-child::after {
-  display: none;
-}
-
-.navbar_subitem_links {
-  display: none;
-}
-
 .navbar_subitem_link {
   color: #98afae;
   font-size: 1.2rem;
@@ -483,8 +462,8 @@ html {
   color: var(--logo-fill-color);
 }
 
-.navbar_subitem_title_active::after {
-  transform: rotate(-135deg) translate(5px, 15px) scale(1);
+.navbar_subitem_title_active {
+  transform: rotate(-135deg) translate(5px, 15px) scale(1) !important;
 }
 
 @media screen and (max-width: 1000px) {
@@ -506,5 +485,8 @@ html {
   .navbar_burger {
     display: block;
     cursor: pointer;
+    position: fixed;
+    top: 0;
+    right: 0;
   }
 }
