@@ -3,7 +3,7 @@ import useNavbar from "../../../hooks/useNavbar";
 import ActiveHeaderSubItem from "../HeaderWrapperSubItem/ActiveSubItem/ActiveHeaderSubItem";
 import UnactiveHeaderSubitem from "../HeaderWrapperSubItem/UnactiveSubItem/UnactiveHeaderSubItem";
 import styles from "./HeaderWrapper.module.css";
-
+import ReactDOM from "react-dom";
 const HeaderWrapper = () => {
   const [activeTab, setActiveTab] = useState<number | null>(null);
   const handleActiveTab = (index: number) => {
@@ -14,7 +14,7 @@ const HeaderWrapper = () => {
     }
   };
   const items = useNavbar();
-  return (
+  return ReactDOM.createPortal(
     <div className={styles.navbar_wrapper}>
       <div className={styles.navbar_subitems}>
         {items &&
@@ -42,7 +42,8 @@ const HeaderWrapper = () => {
             ),
           )}
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 };
 export default HeaderWrapper;
