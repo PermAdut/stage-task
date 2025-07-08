@@ -6,13 +6,13 @@ import styles from "./HeaderWrapper.module.css";
 
 const HeaderWrapper = () => {
   const [activeTab, setActiveTab] = useState<number | null>(null);
-  const handleActiveTab = (index:number) => {
-    if(activeTab != null && activeTab === index){
+  const handleActiveTab = (index: number) => {
+    if (activeTab != null && activeTab === index) {
       setActiveTab(null);
     } else {
-      setActiveTab(index)
+      setActiveTab(index);
     }
-  }
+  };
   const items = useNavbar();
   return (
     <div className={styles.navbar_wrapper}>
@@ -25,7 +25,9 @@ const HeaderWrapper = () => {
                 key={index}
                 title={el.title}
                 isArrow={el.isArrow}
-                handleActiveTab={() => {handleActiveTab(index)}}
+                handleActiveTab={() => {
+                  handleActiveTab(index);
+                }}
                 displayedSubItems={el.subMenuObjects}
               />
             ) : (
@@ -33,7 +35,9 @@ const HeaderWrapper = () => {
                 key={index}
                 title={el.title}
                 isArrow={el.isArrow}
-                handleActiveTab={() => {handleActiveTab(index)}}
+                handleActiveTab={() => {
+                  handleActiveTab(index);
+                }}
               />
             ),
           )}

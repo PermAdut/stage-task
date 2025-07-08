@@ -1,3 +1,4 @@
+import { Suspense, lazy } from "react";
 import styles from "./ProjectItem.module.css";
 export type Project = {
   imageLink: string;
@@ -8,15 +9,27 @@ export type Project = {
   moreVersion: string;
 };
 const ProjectItem = (props: Project) => {
+  const SVGComponent = lazy(() =>
+    import(`../../../assets/images/ReactItems/${props.imageLink}.svg?react`)
+      .then((module) => ({
+        default: module.default,
+      }))
+      .catch(() => ({
+        default: () => <div>Image not found</div>,
+      })),
+  );
+
   return (
     <article className={styles.projects_wrap}>
       <a className={styles.projects_link} href="#">
         <div className={styles.projects_item}>
           <div className={styles.projects_title}>
             <div className={styles.projects_image}>
-              <img src={props.imageLink} alt={props.altText} />
+              <Suspense fallback={<div>Загрузка...</div>}>
+                <SVGComponent />
+              </Suspense>
             </div>
-            <div className={styles.projects_info}>
+            <div className={styles.info}>
               <h3>{props.title}</h3>
             </div>
           </div>
@@ -34,4 +47,5 @@ const ProjectItem = (props: Project) => {
     </article>
   );
 };
+
 export default ProjectItem;

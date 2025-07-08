@@ -18,9 +18,10 @@ const UnactiveHeaderSubItem = (props: UnactiveSubItemProps) => {
 };
 export default UnactiveHeaderSubItem;
 
-const DisplayedSubItem = (el:UnactiveSubItemProps) => {
+const DisplayedSubItem = (el: UnactiveSubItemProps) => {
   return (
-    <span onClick={el.handleActiveTab}
+    <span
+      onClick={el.handleActiveTab}
       className={classNames(styles.navbar_subitem_title, {
         [styles.arrow]: el.isArrow,
       })}
