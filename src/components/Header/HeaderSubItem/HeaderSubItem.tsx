@@ -22,13 +22,12 @@ const HeaderSubItem = (props: HeaderSubItemProps) => {
       </div>
       {props.isActive && props.subMenuObjects && (
         <ul className={styles.navbar_subitem_links}>
-          {props.subMenuObjects.map((el, index) => (
-            <DisplayedSubItem
-              key={index}
-              isLink={el.isLink}
-              isMargin={el.isMargin}
-              text={el.text}
-            />
+          {props.subMenuObjects.map((group, groupIndex) => (
+            <li key={groupIndex} className={styles.navbar_subitem_group}>
+              {group.map((el, index) => (
+                <DisplayedSubItem key={index} text={el.text} href={el.href} />
+              ))}
+            </li>
           ))}
         </ul>
       )}
@@ -55,16 +54,13 @@ const DisplayedItem = (el: DisplayedItemProps) => {
 type DisplayedSubItemProps = SubMenuObject;
 
 const DisplayedSubItem = (el: DisplayedSubItemProps) => {
-  return (
-    <li className={el.isMargin ? styles.navbar_margin : ""}>
-      {el.isLink ? (
-        <a className={styles.navbar_subitem_link} href="#">
-          {el.text}
-        </a>
-      ) : (
-        <div className={styles.navbar_subitem_link}>{el.text}</div>
-      )}
-    </li>
+  const content = <>{el.text}</>;
+  return el.href ? (
+    <a className={styles.navbar_subitem_link} href={el.href}>
+      {content}
+    </a>
+  ) : (
+    <div className={styles.navbar_subitem_link}>{content}</div>
   );
 };
 

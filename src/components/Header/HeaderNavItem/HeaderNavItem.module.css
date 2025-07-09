@@ -31,6 +31,7 @@
   position: absolute;
   top: 50%;
   z-index: 1;
+
 }
 
 .navbar_dropdown_link {
@@ -39,7 +40,11 @@
   color: var(--text-color);
 }
 
-.navbar_dropdown_content li {
+.navbar_dropdown_content li a{
+  padding: 0.375rem 1rem;
+}
+
+.navbar_dropdown_content li div{
   padding: 0.375rem 1rem;
 }
 
@@ -49,9 +54,12 @@
 
 .navbar_link:hover .navbar_dropdown_content {
   transition: all 0.3s ease;
-  display: block;
+  display: flex;
+  gap: 24px;
+  flex-direction: column;
 }
 
-.navbar_margin {
-  margin-bottom: 24px;
+.navbar_group {
+  display: flex;
+  flex-direction: column;
 }

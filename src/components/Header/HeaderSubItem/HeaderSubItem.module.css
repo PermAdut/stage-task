@@ -35,8 +35,10 @@
     transform: rotate(-135deg) translate(5px, 15px) scale(1);
   }
 
-  .navbar_margin {
-    margin-bottom: 24px;
+  .navbar_subitem_links{
+    display: flex;
+    flex-direction: column;
+    gap:24px;
   }
 
   .navbar_subitem_link {
@@ -49,4 +51,10 @@
   .navbar_subitem_link:hover {
     color: var(--logo-fill-color);
   }
+
+  .navbar_subitem_group {
+    display: flex;
+    flex-direction: column; 
+  }
+  
 }

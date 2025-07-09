@@ -5,7 +5,9 @@ import type {
   SubMenuObject,
 } from "../../../constants/Navbar.constants";
 import ExtraSvg from "../../../assets/images/ReactItems/ExtraSvg";
+
 type HeaderNavItemProps = NavBarItem;
+
 const HeaderNavItem = (props: HeaderNavItemProps) => {
   return (
     <div className={styles.navbar_link}>
@@ -16,16 +18,19 @@ const HeaderNavItem = (props: HeaderNavItemProps) => {
       >
         {props.title}
       </span>
-      {props.subMenuObjects && props.subMenuObjects.length > 0 && (
+      {props.subMenuObjects && (
         <ul className={styles.navbar_dropdown_content}>
-          {props.subMenuObjects.map((el) => (
-            <LinkObject
-              key={el.text}
-              text={el.text}
-              isLink={el.isLink}
-              isMargin={el.isMargin}
-              extraContent={el?.extraContent}
-            />
+          {props.subMenuObjects.map((group, groupIndex) => (
+            <li key={groupIndex} className={styles.navbar_group}>
+              {group.map((item) => (
+                <LinkObject
+                  key={item.text}
+                  text={item.text}
+                  href={item.href}
+                  extraContent={item.extraContent}
+                />
+              ))}
+            </li>
           ))}
         </ul>
       )}
@@ -34,17 +39,18 @@ const HeaderNavItem = (props: HeaderNavItemProps) => {
 };
 type LinkObjectProps = SubMenuObject;
 
-const LinkObject = (el: LinkObjectProps) => {
-  return (
-    <li className={el.isMargin ? styles.navbar_margin : ""}>
-      {el.isLink ? (
-        <a className={styles.navbar_dropdown_link} href="#">
-          {el.text} {el.extraContent && <ExtraSvg />}
-        </a>
-      ) : (
-        <div>{el.text}</div>
-      )}
-    </li>
+const LinkObject = (el : LinkObjectProps) => {
+  const content = (
+    <>
+      {el.text} {el.extraContent && <ExtraSvg />}
+    </>
+  );
+  return el.href ? (
+    <a className={styles.navbar_dropdown_link} href={el.href}>
+      {content}
+    </a>
+  ) : (
+    <div>{content}</div>
   );
 };
 export default HeaderNavItem;
