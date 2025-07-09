@@ -1,6 +1,6 @@
 import { Suspense, lazy } from "react";
 import styles from "./ProjectItem.module.css";
-import type {Project} from "../../../constants/Project.constants";
+import type { Project } from "../../../constants/Project.constants";
 const ProjectItem = (props: Project) => {
   const SVGComponent = lazy(() =>
     import(`../../../assets/images/ReactItems/${props.imageLink}.svg?react`)

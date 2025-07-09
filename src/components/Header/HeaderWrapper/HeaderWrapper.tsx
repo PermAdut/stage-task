@@ -1,9 +1,8 @@
 import { useState } from "react";
-import {navbarItems} from "../../../constants/Navbar.constants";
-import ActiveHeaderSubItem from "../HeaderWrapperSubItem/ActiveSubItem/ActiveHeaderSubItem";
-import UnactiveHeaderSubitem from "../HeaderWrapperSubItem/UnactiveSubItem/UnactiveHeaderSubItem";
+import { navbarItems } from "../../../constants/Navbar.constants";
 import styles from "./HeaderWrapper.module.css";
 import ReactDOM from "react-dom";
+import HeaderSubItem from "../HeaderSubItem/HeaderSubItem";
 const HeaderWrapper = () => {
   const [activeTab, setActiveTab] = useState<number | null>(null);
   const handleActiveTab = (index: number) => {
@@ -16,29 +15,17 @@ const HeaderWrapper = () => {
   return ReactDOM.createPortal(
     <div className={styles.navbar_wrapper}>
       <div className={styles.navbar_subitems}>
-        {navbarItems.length > 0 &&
-          navbarItems.map((el, index) =>
-            index === activeTab ? (
-              <ActiveHeaderSubItem
-                key={index}
-                title={el.title}
-                isArrow={el.isArrow}
-                handleActiveTab={() => {
-                  handleActiveTab(index);
-                }}
-                displayedSubItems={el.subMenuObjects}
-              />
-            ) : (
-              <UnactiveHeaderSubitem
-                key={index}
-                title={el.title}
-                isArrow={el.isArrow}
-                handleActiveTab={() => {
-                  handleActiveTab(index);
-                }}
-              />
-            ),
-          )}
+        {navbarItems &&
+          navbarItems.map((el, index) => (
+            <HeaderSubItem
+              key={index}
+              isArrow={el.isArrow}
+              title={el.title}
+              isActive={activeTab === index}
+              handleActiveTab={() => handleActiveTab(index)}
+              subMenuObjects={el.subMenuObjects}
+            />
+          ))}
       </div>
     </div>,
     document.body,

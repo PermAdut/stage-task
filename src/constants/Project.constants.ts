@@ -7,7 +7,7 @@ export type Project = {
   moreVersion: string;
 };
 
-export const projects:Project[] = [
+export const projects: Project[] = [
   {
     imageLink: "spring-boot",
     altText: "spring boot",

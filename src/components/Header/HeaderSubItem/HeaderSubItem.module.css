@@ -31,8 +31,22 @@
     transition: transform 0.2s ease-out;
     width: 15px;
   }
-
   .arrow_active::after {
     transform: rotate(-135deg) translate(5px, 15px) scale(1);
+  }
+
+  .navbar_margin {
+    margin-bottom: 24px;
+  }
+
+  .navbar_subitem_link {
+    color: #98afae;
+    font-size: 1.2rem;
+    padding: 0.2rem 0;
+    line-height: 1.5;
+  }
+
+  .navbar_subitem_link:hover {
+    color: var(--logo-fill-color);
   }
 }
