@@ -1,3 +1,4 @@
+import ExtraSvg from "../assets/images/ReactItems/ExtraSvg";
 export type NavBarItem = {
   title: string;
   isArrow: boolean;
@@ -7,7 +8,7 @@ export type NavBarItem = {
 export type SubMenuObject = {
   text: string;
   href?: string;
-  extraContent?: string;
+  extraContent?: unknown;
 };
 
 export const navbarItems: NavBarItem[] = [
@@ -64,7 +65,7 @@ export const navbarItems: NavBarItem[] = [
         {
           text: "Spring Initializr",
           href: "#",
-          extraContent: "../../../assets/images/ReactItems/ExtraSvg.tsx",
+          extraContent: ExtraSvg,
         },
       ],
     ],

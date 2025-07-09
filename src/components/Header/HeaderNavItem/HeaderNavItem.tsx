@@ -4,7 +4,7 @@ import type {
   NavBarItem,
   SubMenuObject,
 } from "../../../constants/Navbar.constants";
-import ExtraSvg from "../../../assets/images/ReactItems/ExtraSvg";
+import type { JSX } from "react";
 
 type HeaderNavItemProps = NavBarItem;
 
@@ -40,9 +40,12 @@ const HeaderNavItem = (props: HeaderNavItemProps) => {
 type LinkObjectProps = SubMenuObject;
 
 const LinkObject = (el : LinkObjectProps) => {
+  function isJSXElement(value: unknown): value is () => JSX.Element {
+    return typeof value === 'function';
+  }
   const content = (
     <>
-      {el.text} {el.extraContent && <ExtraSvg />}
+      {el.text} {isJSXElement(el.extraContent) && <el.extraContent />}
     </>
   );
   return el.href ? (

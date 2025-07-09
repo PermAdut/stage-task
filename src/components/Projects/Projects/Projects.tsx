@@ -18,7 +18,7 @@ const Projects = () => {
             {displayedProjects.map((project, index) => (
               <ProjectItem
                 key={index}
-                imageLink={project.imageLink}
+                image={project.image}
                 altText={project.altText}
                 title={project.title}
                 description={project.description}

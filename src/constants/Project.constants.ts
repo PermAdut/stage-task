@@ -1,5 +1,13 @@
+import type React from "react";
+import SprgingBoot from "../assets/images/ReactItems/spring-boot.svg?react"
+import SpringFramework from "../assets/images/ReactItems/spring-framework.svg?react";
+import SpringData from "../assets/images/ReactItems/spring-data.svg?react";
+import SpringCloud from "../assets/images/ReactItems/spring-cloud.svg?react";
+import SpringDataFlow from "../assets/images/ReactItems/spring-data-flow.svg?react";
+import SpringSecurity from "../assets/images/ReactItems/spring-security.svg?react";
+
 export type Project = {
-  imageLink: string;
+  image: typeof SprgingBoot;
   altText: string;
   title: string;
   description: string;
@@ -9,7 +17,7 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    imageLink: "spring-boot",
+    image: SprgingBoot,
     altText: "spring boot",
     title: "spring boot",
     description:
@@ -18,7 +26,7 @@ export const projects: Project[] = [
     moreVersion: "+ 9 versions",
   },
   {
-    imageLink: "spring-framework",
+    image: SpringFramework,
     altText: "spring framework",
     title: "spring framework",
     description:
@@ -27,7 +35,7 @@ export const projects: Project[] = [
     moreVersion: "+ 8 versions",
   },
   {
-    imageLink: "spring-data",
+    image: SpringData,
     altText: "spring data",
     title: "spring data",
     description:
@@ -36,7 +44,7 @@ export const projects: Project[] = [
     moreVersion: "+ 6 versions",
   },
   {
-    imageLink: "spring-cloud",
+    image: SpringCloud,
     altText: "spring cloud",
     title: "spring cloud",
     description:
@@ -45,7 +53,7 @@ export const projects: Project[] = [
     moreVersion: "+ 9 versions",
   },
   {
-    imageLink: "spring-data-flow",
+    image: SpringDataFlow,
     altText: "spring cloud data flow",
     title: "spring cloud data flow",
     description:
@@ -54,7 +62,7 @@ export const projects: Project[] = [
     moreVersion: "+ 7 versions",
   },
   {
-    imageLink: "spring-security",
+    image: SpringSecurity,
     altText: "spring security",
     title: "spring security",
     description:
