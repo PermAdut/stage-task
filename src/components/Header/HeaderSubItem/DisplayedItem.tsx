@@ -1,6 +1,6 @@
-import type { HeaderSubItemProps } from './HeaderSubItem';
-import styles from './HeaderSubItem.module.css';
-import classNames from 'classnames';
+import type { HeaderSubItemProps } from "./HeaderSubItem";
+import styles from "./HeaderSubItem.module.css";
+import classNames from "classnames";
 type DisplayedItemProps = Omit<HeaderSubItemProps, "subMenuObjects">;
 
 const DisplayedItem = (el: DisplayedItemProps) => {
@@ -16,4 +16,4 @@ const DisplayedItem = (el: DisplayedItemProps) => {
     </span>
   );
 };
-export default DisplayedItem
+export default DisplayedItem;

@@ -43,7 +43,7 @@ export const navbarItems: NavBarItem[] = [
         { text: "Spring Integration", href: "#" },
         { text: "Spring Batch", href: "#" },
         { text: "Spring Security", href: "#" },
-        { text: "Spring AI", href: "#" }
+        { text: "Spring AI", href: "#" },
       ],
       [
         { text: "Release Calendar", href: "#" },

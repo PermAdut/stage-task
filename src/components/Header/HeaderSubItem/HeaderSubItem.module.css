@@ -35,10 +35,10 @@
     transform: rotate(-135deg) translate(5px, 15px) scale(1);
   }
 
-  .navbar_subitem_links{
+  .navbar_subitem_links {
     display: flex;
     flex-direction: column;
-    gap:24px;
+    gap: 24px;
   }
 
   .navbar_subitem_link {
@@ -54,7 +54,6 @@
 
   .navbar_subitem_group {
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
   }
-  
 }

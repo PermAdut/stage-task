@@ -1,5 +1,5 @@
 import type { SubMenuObject } from "../../../interfaces/Navbar.interface";
-import styles from './HeaderSubItem.module.css'
+import styles from "./HeaderSubItem.module.css";
 type DisplayedSubItemProps = SubMenuObject;
 
 const DisplayedSubItem = (el: DisplayedSubItemProps) => {

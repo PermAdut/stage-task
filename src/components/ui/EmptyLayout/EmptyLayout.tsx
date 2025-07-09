@@ -1,6 +1,6 @@
-import styles from './EmptyLayout.module.css'
+import styles from "./EmptyLayout.module.css";
 type EmptyLayoutPropsType = React.PropsWithChildren<{
-    exist: boolean;
+  exist: boolean;
 }>;
 
 const EmptyLayout = (props: EmptyLayoutPropsType) => {

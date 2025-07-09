@@ -4,7 +4,7 @@ const HeaderLogo = () => {
   return (
     <div className={styles.navbar_logo}>
       <a href="#" title="HOME" className={styles.navbar_logo_link}>
-        <SvgLogo className={styles.logo}/>
+        <SvgLogo className={styles.logo} />
       </a>
     </div>
   );

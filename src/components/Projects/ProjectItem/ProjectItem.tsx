@@ -1,4 +1,3 @@
-
 import styles from "./ProjectItem.module.css";
 import type { Project } from "../../../interfaces/Project.interface";
 

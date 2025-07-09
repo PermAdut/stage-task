@@ -1,6 +1,4 @@
-import type {
-  NavBarItem,
-} from "../../../interfaces/Navbar.interface";
+import type { NavBarItem } from "../../../interfaces/Navbar.interface";
 import styles from "./HeaderSubItem.module.css";
 import DisplayedItem from "./DisplayedItem";
 import DisplayedSubItem from "./DisplayedSubItem";

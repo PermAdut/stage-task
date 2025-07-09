@@ -1,4 +1,4 @@
-import SpringBoot from "../assets/images/icons/spring-boot.svg?react"
+import SpringBoot from "../assets/images/icons/spring-boot.svg?react";
 import SpringFramework from "../assets/images/icons/spring-framework.svg?react";
 import SpringData from "../assets/images/icons/spring-data.svg?react";
 import SpringCloud from "../assets/images/icons/spring-cloud.svg?react";
