@@ -1,4 +1,5 @@
-import { projects, type Project } from "../constants/Project.constants";
+import { projects } from "../constants/Project.constants";
+import type { Project } from "../interfaces/Project.interface";
 import React, { useRef } from "react";
 export default function useSearch(
   setCurrentProjects: (projects: Project[]) => void,

@@ -1,10 +1,10 @@
 import type {
   NavBarItem,
-  SubMenuObject,
-} from "../../../constants/Navbar.constants";
+} from "../../../interfaces/Navbar.interface";
 import styles from "./HeaderSubItem.module.css";
-import classNames from "classnames";
-type HeaderSubItemProps = NavBarItem & {
+import DisplayedItem from "./DisplayedItem";
+import DisplayedSubItem from "./DisplayedSubItem";
+export type HeaderSubItemProps = NavBarItem & {
   handleActiveTab: () => void;
   isActive?: boolean;
 };
@@ -32,35 +32,6 @@ const HeaderSubItem = (props: HeaderSubItemProps) => {
         </ul>
       )}
     </>
-  );
-};
-
-type DisplayedItemProps = Omit<HeaderSubItemProps, "subMenuObjects">;
-
-const DisplayedItem = (el: DisplayedItemProps) => {
-  return (
-    <span
-      onClick={el.handleActiveTab}
-      className={classNames(styles.navbar_subitem_title, {
-        [styles.arrow]: el.isArrow,
-        [styles.arrow_active]: el.isActive,
-      })}
-    >
-      {el.title}
-    </span>
-  );
-};
-
-type DisplayedSubItemProps = SubMenuObject;
-
-const DisplayedSubItem = (el: DisplayedSubItemProps) => {
-  const content = <>{el.text}</>;
-  return el.href ? (
-    <a className={styles.navbar_subitem_link} href={el.href}>
-      {content}
-    </a>
-  ) : (
-    <div className={styles.navbar_subitem_link}>{content}</div>
   );
 };
 

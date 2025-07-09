@@ -1,11 +1,7 @@
 import styles from "./HeaderNavItem.module.css";
 import classNames from "classnames";
-import type {
-  NavBarItem,
-  SubMenuObject,
-} from "../../../constants/Navbar.constants";
-import type { JSX } from "react";
-
+import type { NavBarItem } from "../../../interfaces/Navbar.interface";
+import LinkObject from "./LinkObject";
 type HeaderNavItemProps = NavBarItem;
 
 const HeaderNavItem = (props: HeaderNavItemProps) => {
@@ -37,23 +33,5 @@ const HeaderNavItem = (props: HeaderNavItemProps) => {
     </div>
   );
 };
-type LinkObjectProps = SubMenuObject;
 
-const LinkObject = (el : LinkObjectProps) => {
-  function isJSXElement(value: unknown): value is () => JSX.Element {
-    return typeof value === 'function';
-  }
-  const content = (
-    <>
-      {el.text} {isJSXElement(el.extraContent) && <el.extraContent />}
-    </>
-  );
-  return el.href ? (
-    <a className={styles.navbar_dropdown_link} href={el.href}>
-      {content}
-    </a>
-  ) : (
-    <div>{content}</div>
-  );
-};
 export default HeaderNavItem;

@@ -1,23 +1,14 @@
-import type React from "react";
-import SprgingBoot from "../assets/images/ReactItems/spring-boot.svg?react"
-import SpringFramework from "../assets/images/ReactItems/spring-framework.svg?react";
-import SpringData from "../assets/images/ReactItems/spring-data.svg?react";
-import SpringCloud from "../assets/images/ReactItems/spring-cloud.svg?react";
-import SpringDataFlow from "../assets/images/ReactItems/spring-data-flow.svg?react";
-import SpringSecurity from "../assets/images/ReactItems/spring-security.svg?react";
-
-export type Project = {
-  image: typeof SprgingBoot;
-  altText: string;
-  title: string;
-  description: string;
-  version: string;
-  moreVersion: string;
-};
+import SpringBoot from "../assets/images/icons/spring-boot.svg?react"
+import SpringFramework from "../assets/images/icons/spring-framework.svg?react";
+import SpringData from "../assets/images/icons/spring-data.svg?react";
+import SpringCloud from "../assets/images/icons/spring-cloud.svg?react";
+import SpringDataFlow from "../assets/images/icons/spring-data-flow.svg?react";
+import SpringSecurity from "../assets/images/icons/spring-security.svg?react";
+import type { Project } from "../interfaces/Project.interface";
 
 export const projects: Project[] = [
   {
-    image: SprgingBoot,
+    image: SpringBoot,
     altText: "spring boot",
     title: "spring boot",
     description:

@@ -63,3 +63,9 @@
   display: flex;
   flex-direction: column;
 }
+
+.navbar_extra{
+  height: 1em;
+  margin-left: 0.5rem;
+  vertical-align: -0.125rem,
+}

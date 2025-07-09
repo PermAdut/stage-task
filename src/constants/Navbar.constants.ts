@@ -1,15 +1,5 @@
-import ExtraSvg from "../assets/images/ReactItems/ExtraSvg";
-export type NavBarItem = {
-  title: string;
-  isArrow: boolean;
-  subMenuObjects?: SubMenuObject[][];
-};
-
-export type SubMenuObject = {
-  text: string;
-  href?: string;
-  extraContent?: unknown;
-};
+import ExtraSvg from "../assets/images/icons/extra.svg?react";
+import type { NavBarItem } from "../interfaces/Navbar.interface";
 
 export const navbarItems: NavBarItem[] = [
   {

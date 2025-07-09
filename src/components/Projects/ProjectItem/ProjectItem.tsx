@@ -1,6 +1,7 @@
 
 import styles from "./ProjectItem.module.css";
-import type { Project } from "../../../constants/Project.constants";
+import type { Project } from "../../../interfaces/Project.interface";
+
 const ProjectItem = (props: Project) => {
   return (
     <article className={styles.projects_wrap}>

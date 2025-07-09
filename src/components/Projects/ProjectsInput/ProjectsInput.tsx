@@ -1,4 +1,4 @@
-import type { Project } from "../../../constants/Project.constants";
+import type { Project } from "../../../interfaces/Project.interface";
 import styles from "./ProjectsInput.module.css";
 import useSearch from "../../../hooks/useSearch";
 export type ProjectInputProps = {

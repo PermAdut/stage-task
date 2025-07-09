@@ -1,12 +1,12 @@
-.logo {
-  width: 100%;
-  fill: #6cb52d;
-}
-
 .navbar_logo {
   display: flex;
 }
 
 .navbar_logo_link {
   display: flex;
+}
+
+.logo{
+  width: 100%;
+  fill: #6cb52d;
 }

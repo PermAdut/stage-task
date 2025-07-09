@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { navbarItems } from "../../../constants/Navbar.constants";
 import styles from "./HeaderWrapper.module.css";
-import ReactDOM from "react-dom";
 import HeaderSubItem from "../HeaderSubItem/HeaderSubItem";
 const HeaderWrapper = () => {
   const [activeTab, setActiveTab] = useState<number | null>(null);
@@ -12,7 +11,7 @@ const HeaderWrapper = () => {
       setActiveTab(index);
     }
   };
-  return ReactDOM.createPortal(
+  return (
     <div className={styles.navbar_wrapper}>
       <div className={styles.navbar_subitems}>
         {navbarItems &&
@@ -27,8 +26,7 @@ const HeaderWrapper = () => {
             />
           ))}
       </div>
-    </div>,
-    document.body,
+    </div>
   );
 };
 export default HeaderWrapper;
