@@ -1,0 +1,17 @@
+.navbar_links {
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar_items {
+  display: flex;
+  align-items: center;
+  margin-right: -0.75rem;
+  gap: 2rem;
+}
+
+@media screen and (max-width: 900px) {
+  .navbar_items {
+    display: none;
+  }
+}
