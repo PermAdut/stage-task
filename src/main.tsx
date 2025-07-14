@@ -3,13 +3,16 @@ import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
 import "./styles/global.css";
 import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
 import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary.tsx";
 import { store } from "./store/index.ts";
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <ErrorBoundary>
       <Provider store={store}>
-        <App />
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
       </Provider>
     </ErrorBoundary>
   </StrictMode>,
