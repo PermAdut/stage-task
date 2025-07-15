@@ -1,0 +1,33 @@
+import { projects } from "../constants/Project.constants";
+import type { Project } from "../interfaces/Project.interface";
+import React, { useRef } from "react";
+import { useAppDispatch } from "./redux";
+import { ProjectActionType } from "../store/reducers/project";
+export default function useSearch() {
+  const dispatch = useAppDispatch();
+  const timeoutId = useRef<ReturnType<typeof setTimeout> | null>(null);
+  function handleSearch(event: React.ChangeEvent<HTMLInputElement>) {
+    const searchValue = event.target.value.toLowerCase();
+    const filteredProjects = projects.filter(
+      (project) =>
+        project.title.toLowerCase().includes(searchValue) ||
+        project.description.toLowerCase().includes(searchValue),
+    );
+    dispatch(setFoundProjects(filteredProjects));
+  }
+  return function (args: React.ChangeEvent<HTMLInputElement>) {
+    if (timeoutId.current) {
+      clearTimeout(timeoutId.current);
+    }
+    timeoutId.current = setTimeout(() => {
+      handleSearch(args);
+    }, 300);
+  };
+}
+
+function setFoundProjects(projects: Project[]) {
+  return {
+    type: ProjectActionType.SEARCH,
+    payload: projects,
+  };
+}

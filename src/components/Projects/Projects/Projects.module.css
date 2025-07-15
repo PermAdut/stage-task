@@ -1,0 +1,13 @@
+.projects {
+  background: var(--bg-color);
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 2px solid var(--header-border-color);
+}
+
+.projects_items {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  padding-bottom: 3rem;
+}
