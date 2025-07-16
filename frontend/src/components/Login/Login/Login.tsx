@@ -1,27 +1,24 @@
 import { useNavigate } from "react-router";
 import styles from "./Login.module.css";
 import LoginInput from "../LoginInput/LoginInput";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
+import { loginUser } from "../../../store/slices/userSlice";
 
 const Login = () => {
   const dispatch = useAppDispatch();
   const errors = useAppSelector((state) => state.user.error);
+  const isAuth = useAppSelector((state) => state.user.isAuthenticated);
   const [userName, setUserName] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const navigate = useNavigate();
-  const handleClick = () => {
-    dispatch({
-      type: "LOGIN",
-      payload: {
-        userName: userName,
-        password: password,
-      },
-    });
-    if (!errors) {
-      navigate("/");
-    }
+  const handleClick = async () => {
+    await dispatch(loginUser({ userName, password }));
   };
+  useEffect(() => {
+    if(isAuth)
+      navigate('/')
+  }, [isAuth, navigate])
   return (
     <div className={styles.login_content}>
       <div className={styles.login_wrapper}>
