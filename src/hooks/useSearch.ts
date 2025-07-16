@@ -2,7 +2,7 @@ import { projects } from "../constants/Project.constants";
 import type { Project } from "../interfaces/Project.interface";
 import React, { useRef } from "react";
 import { useAppDispatch } from "./redux";
-import { ProjectActionType } from "../store/reducers/project";
+import { ProjectActionType } from "../store/slices/project";
 export default function useSearch() {
   const dispatch = useAppDispatch();
   const timeoutId = useRef<ReturnType<typeof setTimeout> | null>(null);
