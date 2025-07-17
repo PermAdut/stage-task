@@ -1,30 +1,46 @@
-import { projects } from "../../constants/Project.constants";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import type { Project } from "../../interfaces/Project.interface";
-export const initialState: State = {
-  projects: projects,
-};
-type State = {
+import axios, { AxiosError } from "axios";
+
+export type ProjectState = {
   projects: Project[];
 };
-export const ProjectActionType = {
-  SEARCH: "SEARCH",
-} as const;
 
-type ActionSearch = {
-  type: "SEARCH";
-  payload: Project[];
+const initialState: ProjectState = {
+  projects: [],
 };
 
-type Action = ActionSearch;
-
-export function projectReducer(
-  state: State = initialState,
-  action: Action,
-): State {
-  switch (action.type) {
-    case "SEARCH":
-      return { projects: action.payload };
-    default:
-      return state;
+export const searchProjects = createAsyncThunk<
+  Project[],
+  string,
+  { rejectValue: string }
+>("projects/search", async (searchString: string, { rejectWithValue }) => {
+  try {
+    const response = await axios.get(
+      `${import.meta.env.VITE_API_SERVER_URL}/api/v1.0/projects?search=${searchString}`,
+    );
+    return response.data;
+  } catch (err: unknown) {
+    if (err instanceof AxiosError) {
+      return rejectWithValue(err.response?.data.error || "Failed to fetch");
+    }
+    return rejectWithValue("Iternal Server Error");
   }
-}
+});
+
+const projectSlice = createSlice({
+  name: "project",
+  initialState: initialState,
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(searchProjects.fulfilled, (state, action) => {
+        state.projects = action.payload;
+      })
+      .addCase(searchProjects.rejected, (state) => {
+        state.projects = [];
+      });
+  },
+});
+
+export default projectSlice.reducer;

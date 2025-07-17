@@ -4,13 +4,11 @@ import axios, { AxiosError } from "axios";
 export type UserState = {
   isAuthenticated: boolean;
   error: string | null;
-  loading: boolean;
 };
 
 const initialState: UserState = {
   isAuthenticated: false,
   error: null,
-  loading: false,
 };
 
 type LoginCredentials = {
@@ -33,9 +31,9 @@ export const loginUser = createAsyncThunk<
       credentials,
     );
     return response.data;
-  } catch(err:unknown) {
-    if(err instanceof AxiosError){
-      return rejectWithValue(err.response?.data.error)
+  } catch (err: unknown) {
+    if (err instanceof AxiosError) {
+      return rejectWithValue(err.response?.data.error);
     }
     return rejectWithValue("Failed to login");
   }
@@ -48,16 +46,13 @@ const userSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(loginUser.pending, (state) => {
-        state.loading = true;
         state.error = null;
       })
       .addCase(loginUser.fulfilled, (state) => {
-        state.loading = false;
         state.error = null;
         state.isAuthenticated = true;
       })
       .addCase(loginUser.rejected, (state, action) => {
-        state.loading = false;
         state.error = action.payload || "Failed to login";
       });
   },

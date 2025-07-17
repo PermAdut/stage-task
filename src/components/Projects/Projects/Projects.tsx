@@ -2,10 +2,16 @@ import ProjectItem from "../ProjectItem/ProjectItem";
 import ProjectsInput from "../ProjectsInput/ProjectsInput";
 import EmptyLayout from "../../ui/EmptyLayout/EmptyLayout";
 import styles from "./Projects.module.css";
-import { useAppSelector } from "../../../hooks/redux";
+import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
+import { useEffect } from "react";
+import { searchProjects } from "../../../store/slices/projectSlice";
 
 const Projects = () => {
   const projectsState = useAppSelector((state) => state.project);
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(searchProjects(""));
+  }, [dispatch]);
   return (
     <section className={styles.projects}>
       <div className="container">

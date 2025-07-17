@@ -16,9 +16,8 @@ const Login = () => {
     await dispatch(loginUser({ userName, password }));
   };
   useEffect(() => {
-    if(isAuth)
-      navigate('/')
-  }, [isAuth, navigate])
+    if (isAuth) navigate("/");
+  }, [isAuth, navigate]);
   return (
     <div className={styles.login_content}>
       <div className={styles.login_wrapper}>
