@@ -17,7 +17,7 @@ const MainPage = () => {
     <>
       <Header />
       <Introduce />
-      {/* <Projects /> */}
+      <Projects />
     </>
   );
 };

@@ -7,9 +7,10 @@ const ProjectItem = (props: Project) => {
       <a className={styles.projects_link} href="#">
         <div className={styles.projects_item}>
           <div className={styles.projects_title}>
-            <div className={styles.projects_image}>
-              <props.image />
-            </div>
+            <div
+              className={styles.projects_image}
+              dangerouslySetInnerHTML={{ __html: props.image }}
+            ></div>
             <div className={styles.projects_info}>
               <h3>{props.title}</h3>
             </div>
