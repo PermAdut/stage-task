@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  lint_fronted:
+  lint:
     runs-on: ubuntu-latest
     
     - name: Checkout code
