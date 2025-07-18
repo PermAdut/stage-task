@@ -8,37 +8,37 @@ on:
 jobs:
   lint:
     runs-on: ubuntu-latest
-    
-    - name: Checkout code
-      uses: @actions/checkout@v4
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    - name: Setup NodeJs
-      uses: actions/setup-node@v4
-      with:
-        node-version: "22"
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
 
-    - name: Cache node modules
-      uses: actions/cache@v4
-      with:
-        path: ~/.npm
-        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-node-
-    
-    - name: Install frontend dependencies
+      - name: Cache node modules
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install frontend dependencies
         run: cd frontend && npm ci
-    
-    - name: Run prettier (frontend)
+
+      - name: Run Prettier (frontend)
         run: cd frontend && npm run prettier
-     
-    - name: Run eslint (frontend)
+
+      - name: Run ESLint (frontend)
         run: cd frontend && npm run lint
-        
-    - name: Install backend dependencies
+
+      - name: Install backend dependencies
         run: cd server && npm ci
-    
-    - name: Run prettier (backend)
+
+      - name: Run Prettier (backend)
         run: cd server && npm run prettier
-     
-    - name: Run eslint (backend)
-        run: cd server && npm run lint    
+
+      - name: Run ESLint (backend)
+        run: cd server && npm run lint
