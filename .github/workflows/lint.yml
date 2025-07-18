@@ -1,0 +1,44 @@
+name: ESLint
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Cache node modules
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install frontend dependencies
+        run: cd frontend && npm ci
+
+      - name: Run Prettier (frontend)
+        run: cd frontend && npm run prettier
+
+      - name: Run ESLint (frontend)
+        run: cd frontend && npm run lint
+
+      - name: Install backend dependencies
+        run: cd server && npm ci
+
+      - name: Run Prettier (backend)
+        run: cd server && npm run prettier
+
+      - name: Run ESLint (backend)
+        run: cd server && npm run lint
