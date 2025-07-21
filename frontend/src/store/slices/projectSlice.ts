@@ -18,9 +18,15 @@ export const searchProjects = createAsyncThunk<
   try {
     const response = await axios.get(
       `${import.meta.env.VITE_API_SERVER_URL}/api/v1.0/projects?search=${searchString}`,
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      },
     );
     return response.data;
   } catch (err: unknown) {
+    console.log(err);
     if (err instanceof AxiosError) {
       return rejectWithValue(err.response?.data.error || "Failed to fetch");
     }

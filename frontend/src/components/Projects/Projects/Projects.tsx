@@ -11,7 +11,7 @@ const Projects = () => {
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(searchProjects(""));
-  }, [dispatch]);
+  }, []);
   return (
     <section className={styles.projects}>
       <div className="container">
