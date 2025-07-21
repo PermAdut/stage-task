@@ -7,17 +7,19 @@ export type UserState = {
 };
 
 const initialState: UserState = {
-  isAuthenticated: false,
+  isAuthenticated: Boolean(localStorage.getItem('accessToken')),
   error: null,
 };
 
 type LoginCredentials = {
-  userName: string;
+  username: string;
   password: string;
 };
 
 type LoginResponse = {
-  userName: string;
+  username: string;
+  accessToken: string;
+  refreshToke: string;
 };
 
 export const loginUser = createAsyncThunk<
@@ -30,6 +32,8 @@ export const loginUser = createAsyncThunk<
       `${import.meta.env.VITE_API_SERVER_URL}/api/v1.0/user/login`,
       credentials,
     );
+    localStorage.setItem("accessToken", response.data.accessToken);
+    localStorage.setItem("refreshToken", response.data.refreshToken);
     return response.data;
   } catch (err: unknown) {
     if (err instanceof AxiosError) {
