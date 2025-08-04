@@ -25,7 +25,6 @@ function App() {
     ) {
       refreshToken();
     }
-    console.log(123);
   }, []);
   return (
     <>
