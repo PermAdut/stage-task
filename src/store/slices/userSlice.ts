@@ -3,11 +3,13 @@ import axios, { AxiosError } from "axios";
 
 export type UserState = {
   isAuthenticated: boolean;
+  isLoading: boolean;
   error: string | null;
 };
 
 const initialState: UserState = {
-  isAuthenticated: Boolean(localStorage.getItem('accessToken')),
+  isAuthenticated: !!localStorage.getItem('accessToken'),
+  isLoading: false,
   error: null,
 };
 
@@ -43,22 +45,59 @@ export const loginUser = createAsyncThunk<
   }
 });
 
+export const checkAuth = createAsyncThunk(
+  "user/check",
+  async (_, { rejectWithValue }) => {
+    try {
+      if (!localStorage.getItem("refreshToken")) throw new Error();
+      const response = await axios.post(
+        `${import.meta.env.VITE_API_SERVER_URL}/api/v1.0/user/refresh`,
+        { refreshToken: localStorage.getItem("refreshToken") },
+      );
+      localStorage.setItem("accessToken", response.data.accessToken);
+      return response.data;
+    } catch {
+      return rejectWithValue("Auth error");
+    }
+  },
+);
+
 const userSlice = createSlice({
   name: "user",
   initialState: initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(loginUser.pending, (state) => {
-        state.error = null;
-      })
       .addCase(loginUser.fulfilled, (state) => {
         state.error = null;
         state.isAuthenticated = true;
+        state.isLoading = false;
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.error = action.payload || "Failed to login";
-      });
+        state.isLoading = true;
+        state.isAuthenticated = false;
+      })
+      .addCase(loginUser.pending, (state) => {
+        state.isLoading = true;
+        state.isAuthenticated = false;
+        state.error = null
+      })
+      .addCase(checkAuth.rejected, (state) => {
+        state.error = null;
+        state.isAuthenticated = false;
+        state.isLoading = false;
+      })
+      .addCase(checkAuth.fulfilled, (state) => {
+        state.error = null;
+        state.isAuthenticated = true;
+        state.isLoading = false;
+      })
+      .addCase(checkAuth.pending, (state) => {
+        state.error = null;
+        state.isLoading = true;
+        state.isAuthenticated = true;
+      })
   },
 });
 
