@@ -4,33 +4,24 @@ import Page404 from "./pages/Page404/Page404";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import SignUpPage from "./pages/SignUpPage/SignUpPage";
 import { useEffect } from "react";
-import axios from "axios";
-
+import { useAppDispatch, useAppSelector } from "./hooks/redux";
+import { checkAuth } from "./store/slices/userSlice";
+import AuthProtectedPage from "./components/ui/AuthProtectedPage/AuthProtectedPage";
 function App() {
+  const dispatch = useAppDispatch();
+  const isAuth = useAppSelector(state => state.user.isAuthenticated);
   useEffect(() => {
-    async function refreshToken() {
-      try {
-        const response = await axios.post(
-          `${import.meta.env.VITE_API_SERVER_URL}/api/v1.0/user/refresh`,
-          { refreshToken: localStorage.getItem("refreshToken") },
-        );
-        localStorage.setItem('accessToken', response.data.accessToken);
-      } catch (err) {
-        console.log(err);
-      }
-    }
-    if (
-      !localStorage.getItem("accessToken") &&
-      localStorage.getItem("refreshToken")
-    ) {
-      refreshToken();
-    }
-  }, []);
+    if(!isAuth)
+      dispatch(checkAuth());
+  }, [dispatch, isAuth]);
   return (
     <>
       <Routes>
         <Route path="*" element={<Page404 />} />
-        <Route path="/" element={<MainPage />} />
+        <Route
+          path="/"
+          element={<AuthProtectedPage children={<MainPage />} />}
+        />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignUpPage />} />
       </Routes>

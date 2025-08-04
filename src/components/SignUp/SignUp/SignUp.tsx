@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "./SignUp.module.css";
 import LoginInput from "../../ui/LoginInput/LoginInput";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import axios, { AxiosError } from "axios";
 import type { UserRegisterCredentials } from "../../../interfaces/User.interface";
 
@@ -69,6 +69,7 @@ const SignUp = () => {
         <button className={styles.sign_btn} onClick={handleRegister}>
           submit
         </button>
+        <h4>Already have account? <Link to={'/login'}>login</Link></h4>
       </div>
     </div>
   );
