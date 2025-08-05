@@ -8,7 +8,7 @@ export type UserState = {
 };
 
 const initialState: UserState = {
-  isAuthenticated: !!localStorage.getItem('accessToken'),
+  isAuthenticated: false,
   isLoading: false,
   error: null,
 };
@@ -21,7 +21,7 @@ type LoginCredentials = {
 type LoginResponse = {
   username: string;
   accessToken: string;
-  refreshToke: string;
+  refreshToken: string;
 };
 
 export const loginUser = createAsyncThunk<
@@ -33,9 +33,9 @@ export const loginUser = createAsyncThunk<
     const response = await axios.post(
       `${import.meta.env.VITE_API_SERVER_URL}/api/v1.0/user/login`,
       credentials,
+      { withCredentials: true },
     );
     localStorage.setItem("accessToken", response.data.accessToken);
-    localStorage.setItem("refreshToken", response.data.refreshToken);
     return response.data;
   } catch (err: unknown) {
     if (err instanceof AxiosError) {
@@ -49,10 +49,10 @@ export const checkAuth = createAsyncThunk(
   "user/check",
   async (_, { rejectWithValue }) => {
     try {
-      if (!localStorage.getItem("refreshToken")) throw new Error();
       const response = await axios.post(
         `${import.meta.env.VITE_API_SERVER_URL}/api/v1.0/user/refresh`,
-        { refreshToken: localStorage.getItem("refreshToken") },
+        {},
+        { withCredentials: true },
       );
       localStorage.setItem("accessToken", response.data.accessToken);
       return response.data;
@@ -81,7 +81,7 @@ const userSlice = createSlice({
       .addCase(loginUser.pending, (state) => {
         state.isLoading = true;
         state.isAuthenticated = false;
-        state.error = null
+        state.error = null;
       })
       .addCase(checkAuth.rejected, (state) => {
         state.error = null;
@@ -97,7 +97,7 @@ const userSlice = createSlice({
         state.error = null;
         state.isLoading = true;
         state.isAuthenticated = true;
-      })
+      });
   },
 });
 
