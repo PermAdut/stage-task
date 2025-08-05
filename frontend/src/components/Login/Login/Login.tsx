@@ -16,7 +16,7 @@ const Login = () => {
   };
   useEffect(() => {
     if (isAuthenticated) navigate("/");
-  }, [isAuthenticated, navigate]);
+  }, [navigate, isAuthenticated]);
   return (
     <div className={styles.login_content}>
       <div className={styles.login_wrapper}>
