@@ -3,10 +3,12 @@ import type { Project } from "../../interfaces/Project.interface";
 import axios, { AxiosError } from "axios";
 
 export type ProjectState = {
+  isLoading:boolean;
   projects: Project[];
 };
 
 const initialState: ProjectState = {
+  isLoading: false,
   projects: [],
 };
 
@@ -42,10 +44,15 @@ const projectSlice = createSlice({
     builder
       .addCase(searchProjects.fulfilled, (state, action) => {
         state.projects = action.payload;
+        state.isLoading = false;
       })
       .addCase(searchProjects.rejected, (state) => {
         state.projects = [];
-      });
+        state.isLoading = false;
+      })
+      .addCase(searchProjects.pending, (state) => {
+        state.isLoading = true;
+      })
   },
 });
 

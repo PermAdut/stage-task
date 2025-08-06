@@ -1,7 +1,9 @@
 import styles from "./ProjectItem.module.css";
 import type { Project } from "../../../interfaces/Project.interface";
 
-const ProjectItem = (props: Project) => {
+export type PropjectItemProps = Project & {reactElement: React.ReactElement}
+
+const ProjectItem = (props: PropjectItemProps) => {
   return (
     <article className={styles.projects_wrap}>
       <a className={styles.projects_link} href="#">
@@ -9,8 +11,9 @@ const ProjectItem = (props: Project) => {
           <div className={styles.projects_title}>
             <div
               className={styles.projects_image}
-              dangerouslySetInnerHTML={{ __html: props.image }}
-            ></div>
+            >
+              {props.reactElement}
+            </div>
             <div className={styles.projects_info}>
               <h3>{props.title}</h3>
             </div>
