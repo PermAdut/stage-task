@@ -8,7 +8,7 @@ const users: User[] = [
   },
 ];
 
-export async function getUsers() {
+export function getUsers() {
   return users;
 }
 

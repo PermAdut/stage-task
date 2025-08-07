@@ -1,5 +1,7 @@
 import { AppError } from '../../middlewares/handleError';
 import { getProjects } from '../../utils/database';
+import { ErrorMessages } from '../../utils/errorMessages';
+import { HttpStatusCode } from '../../utils/statusCodes';
 import {
   ProjectResponse,
   ProjectResponseElement,
@@ -38,6 +40,6 @@ async function fillSvgContent(projects: Project[]): Promise<ProjectResponse> {
       })
     );
   } catch {
-    throw new AppError(500, 'Iternal server error');
+    throw new AppError(HttpStatusCode.INTERNAL_SERVER_ERROR, ErrorMessages.INTERNAL_SERVER_ERROR);
   }
 }

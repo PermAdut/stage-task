@@ -1,15 +1,16 @@
-import { NextFunction, Request, Response } from 'express';
+import { NextFunction, Response, Request } from 'express';
 import { authUser } from './user.service';
 import { UserRequestDto } from './dto/userRequest.dto';
+import { HttpStatusCode } from '../../utils/statusCodes';
 
 export async function loginUser(
-  req: Request,
+  req: Request<object, any, UserRequestDto, any>,
   res: Response,
   next: NextFunction
 ) {
   try {
-    const userBody = await authUser(req.body as UserRequestDto);
-    res.status(200).json(userBody);
+    const userBody = await authUser(req.body);
+    res.status(HttpStatusCode.OK).json(userBody);
   } catch (err) {
     next(err);
   }
