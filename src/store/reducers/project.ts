@@ -6,9 +6,9 @@ export const initialState: State = {
 type State = {
   projects: Project[];
 };
-export const ProjectActionType = {
-  SEARCH: "SEARCH",
-} as const;
+export enum ProjectActionType{
+  SEARCH = "SEARCH",
+};
 
 type ActionSearch = {
   type: "SEARCH";

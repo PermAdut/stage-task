@@ -7,9 +7,9 @@ type State = {
   isAuthenticated: boolean;
   error: string | null;
 };
-export const ProjectActionType = {
-  LOGIN: "LOGIN",
-} as const;
+export enum UserActionType{
+  LOGIN = "LOGIN",
+};
 
 type ActionLogin = {
   type: "LOGIN";
@@ -26,7 +26,7 @@ export function userReducer(
   action: Action,
 ): State {
   switch (action.type) {
-    case ProjectActionType.LOGIN: {
+    case UserActionType.LOGIN: {
       const foundUser = users.find(
         (user) => user.userName === action.payload.userName,
       );
