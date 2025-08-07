@@ -1,9 +1,10 @@
 import { projects } from "../constants/Project.constants";
-import type { Project } from "../interfaces/Project.interface";
+import { setFoundProjects } from "../store/actions/setFoundProjects";
 import React, { useRef } from "react";
-export default function useSearch(
-  setCurrentProjects: (projects: Project[]) => void,
-) {
+import { useAppDispatch } from "./redux";
+
+export default function useSearch() {
+  const dispatch = useAppDispatch();
   const timeoutId = useRef<ReturnType<typeof setTimeout> | null>(null);
   function handleSearch(event: React.ChangeEvent<HTMLInputElement>) {
     const searchValue = event.target.value.toLowerCase();
@@ -12,7 +13,7 @@ export default function useSearch(
         project.title.toLowerCase().includes(searchValue) ||
         project.description.toLowerCase().includes(searchValue),
     );
-    setCurrentProjects(filteredProjects);
+    dispatch(setFoundProjects(filteredProjects));
   }
   return function (args: React.ChangeEvent<HTMLInputElement>) {
     if (timeoutId.current) {

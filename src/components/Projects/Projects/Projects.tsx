@@ -1,24 +1,18 @@
-import { useState, useCallback } from "react";
-import { type Project } from "../../../interfaces/Project.interface";
-import { projects } from "../../../constants/Project.constants";
 import ProjectItem from "../ProjectItem/ProjectItem";
 import ProjectsInput from "../ProjectsInput/ProjectsInput";
 import EmptyLayout from "../../ui/EmptyLayout/EmptyLayout";
 import styles from "./Projects.module.css";
+import { useAppSelector } from "../../../hooks/redux";
 
 const Projects = () => {
-  const [displayedProjects, setDisplayedProjects] =
-    useState<Project[]>(projects);
-  const handleSearchProjects = useCallback((proj: Project[]) => {
-    setDisplayedProjects(proj);
-  }, []);
+  const projectsState = useAppSelector((state) => state.project);
   return (
     <section className={styles.projects}>
       <div className="container">
-        <ProjectsInput searchProjects={handleSearchProjects} />
+        <ProjectsInput />
         <div className={styles.projects_items}>
-          <EmptyLayout exist={displayedProjects.length > 0}>
-            {displayedProjects.map((project, index) => (
+          <EmptyLayout exist={projectsState.projects.length > 0}>
+            {projectsState.projects.map((project, index) => (
               <ProjectItem
                 key={index}
                 image={project.image}

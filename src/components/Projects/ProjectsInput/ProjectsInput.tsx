@@ -1,11 +1,7 @@
-import type { Project } from "../../../interfaces/Project.interface";
 import styles from "./ProjectsInput.module.css";
 import useSearch from "../../../hooks/useSearch";
-export type ProjectInputProps = {
-  searchProjects: (projects: Project[]) => void;
-};
-const ProjectsInput = (props: ProjectInputProps) => {
-  const debouncedSearch = useSearch(props.searchProjects);
+const ProjectsInput = () => {
+  const debouncedSearch = useSearch();
   return (
     <div className={styles.projects_search_wrapper}>
       <input
