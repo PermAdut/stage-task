@@ -1,8 +1,8 @@
 import { projects } from "../constants/Project.constants";
-import type { Project } from "../interfaces/Project.interface";
+import { setFoundProjects } from "../store/actions/setFoundProjects";
 import React, { useRef } from "react";
 import { useAppDispatch } from "./redux";
-import { ProjectActionType } from "../store/reducers/project";
+
 export default function useSearch() {
   const dispatch = useAppDispatch();
   const timeoutId = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -22,12 +22,5 @@ export default function useSearch() {
     timeoutId.current = setTimeout(() => {
       handleSearch(args);
     }, 300);
-  };
-}
-
-function setFoundProjects(projects: Project[]) {
-  return {
-    type: ProjectActionType.SEARCH,
-    payload: projects,
   };
 }
