@@ -27,7 +27,7 @@ const SignUpPage = () => {
         age: parseInt(age),
       };
       await axios.post(
-        `${import.meta.env.VITE_API_SERVER_URL}/api/v1.0/user/register`,
+        `${process.env.API_SERVER_URL}/api/v1.0/user/register`,
         body,
       );
       navigate("/login");

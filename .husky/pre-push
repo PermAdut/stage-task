@@ -1,0 +1,4 @@
+#!/bin/sh
+npx jest || exit 1
+echo "All tests passed! Ready to push."
+exit 0

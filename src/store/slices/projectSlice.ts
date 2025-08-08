@@ -19,7 +19,7 @@ export const searchProjects = createAsyncThunk<
 >("projects/search", async (searchString: string, { rejectWithValue }) => {
   try {
     const response = await axios.get(
-      `${import.meta.env.VITE_API_SERVER_URL}/api/v1.0/projects?search=${searchString}`,
+      `${process.env.API_SERVER_URL}/api/v1.0/projects?search=${searchString}`,
       {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("accessToken")}`,

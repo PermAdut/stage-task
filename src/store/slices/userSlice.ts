@@ -31,7 +31,7 @@ export const loginUser = createAsyncThunk<
 >("user/login", async (credentials: LoginCredentials, { rejectWithValue }) => {
   try {
     const response = await axios.post(
-      `${import.meta.env.VITE_API_SERVER_URL}/api/v1.0/user/login`,
+      `${process.env.API_SERVER_URL}/api/v1.0/user/login`,
       credentials,
       { withCredentials: true },
     );
@@ -50,7 +50,7 @@ export const checkAuth = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_API_SERVER_URL}/api/v1.0/user/refresh`,
+        `${process.env.API_SERVER_URL}/api/v1.0/user/refresh`,
         {},
         { withCredentials: true },
       );
@@ -75,7 +75,7 @@ const userSlice = createSlice({
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.error = action.payload || "Failed to login";
-        state.isLoading = true;
+        state.isLoading = false;
         state.isAuthenticated = false;
       })
       .addCase(loginUser.pending, (state) => {
