@@ -5,7 +5,3 @@ export type User = {
   age: number;
   password: string;
 };
-
-export type UserLoginCredentials = Pick<User, "username" | "password">;
-
-export type UserRegisterCredentials = User & { repeatPassword: string };

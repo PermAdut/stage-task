@@ -47,6 +47,7 @@
     "jest": "^30.0.5",
     "jest-environment-jsdom": "^30.0.5",
     "prettier": "^3.6.2",
+    "react-hook-form": "^7.62.0",
     "react-jsx-parser": "^2.4.0",
     "svgo": "^4.0.0",
     "ts-jest": "^29.4.1",

@@ -13,9 +13,18 @@ const initialState: UserState = {
   error: null,
 };
 
-type LoginCredentials = {
+export type LoginCredentials = {
   username: string;
   password: string;
+};
+
+export type RegisterCredentials = {
+  username: string;
+  firstName: string;
+  lastName: string;
+  age: number;
+  password: string;
+  repeatPassword: string;
 };
 
 type LoginResponse = {
@@ -23,6 +32,30 @@ type LoginResponse = {
   accessToken: string;
   refreshToken: string;
 };
+
+export const registerUser = createAsyncThunk<
+  LoginResponse,
+  RegisterCredentials,
+  { rejectValue: string }
+>(
+  "user/register",
+  async (credentials: RegisterCredentials, { rejectWithValue }) => {
+    try {
+      const response = await axios.post(
+        `${process.env.API_SERVER_URL}/api/v1.0/user/register`,
+        credentials,
+        { withCredentials: true },
+      );
+      localStorage.setItem("accessToken", response.data.accessToken);
+      return response.data;
+    } catch (err: unknown) {
+      if (err instanceof AxiosError) {
+        return rejectWithValue(err.response?.data.error);
+      }
+      return rejectWithValue("Failed to login");
+    }
+  },
+);
 
 export const loginUser = createAsyncThunk<
   LoginResponse,
@@ -82,6 +115,21 @@ const userSlice = createSlice({
         state.isLoading = true;
         state.isAuthenticated = false;
         state.error = null;
+      })
+      .addCase(registerUser.rejected, (state, action) => {
+        state.error = action.payload || "Failed to register";
+        state.isLoading = false;
+        state.isAuthenticated = false;
+      })
+      .addCase(registerUser.pending, (state) => {
+        state.isLoading = true;
+        state.isAuthenticated = false;
+        state.error = null;
+      })
+      .addCase(registerUser.fulfilled, (state) => {
+        state.error = null;
+        state.isAuthenticated = true;
+        state.isLoading = false;
       })
       .addCase(checkAuth.rejected, (state) => {
         state.error = null;
