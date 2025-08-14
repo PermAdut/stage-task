@@ -3,7 +3,7 @@ import type { Project } from "../../interfaces/Project.interface";
 import axios, { AxiosError } from "axios";
 
 export type ProjectState = {
-  isLoading:boolean;
+  isLoading: boolean;
   projects: Project[];
 };
 
@@ -12,19 +12,23 @@ const initialState: ProjectState = {
   projects: [],
 };
 
+const axiosInstance = axios.create();
+axiosInstance.interceptors.request.use(function (config) {
+  const token = localStorage.getItem("accessToken");
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
+
 export const searchProjects = createAsyncThunk<
   Project[],
   string,
   { rejectValue: string }
 >("projects/search", async (searchString: string, { rejectWithValue }) => {
   try {
-    const response = await axios.get(
+    const response = await axiosInstance.get(
       `${process.env.API_SERVER_URL}/api/v1.0/projects?search=${searchString}`,
-      {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-      },
     );
     return response.data;
   } catch (err: unknown) {
@@ -52,7 +56,7 @@ const projectSlice = createSlice({
       })
       .addCase(searchProjects.pending, (state) => {
         state.isLoading = true;
-      })
+      });
   },
 });
 
