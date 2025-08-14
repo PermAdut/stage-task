@@ -3,23 +3,10 @@ import MainPage from "./pages/MainPage/MainPage";
 import Page404 from "./pages/Page404/Page404";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import SignUpPage from "./pages/SignUpPage/SignUpPage";
-import { useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "./hooks/redux";
-import { checkAuth } from "./store/slices/userSlice";
 import AuthProtectedPage from "./components/ui/AuthProtectedPage/AuthProtectedPage";
+import usePerfomAuth from "./hooks/usePerfomAuth";
 function App() {
-  const dispatch = useAppDispatch();
-  const isAuth = useAppSelector((state) => state.user.isAuthenticated);
-  const [isInitialCheckDone, setIsInitialCheckDone] = useState<boolean>(false);
-  useEffect(() => {
-    const performAuthCheck = async () => {
-      if (!isAuth) {
-        await dispatch(checkAuth());
-      }
-      setIsInitialCheckDone(true);
-    };
-    performAuthCheck();
-  }, []);
+  const isInitialCheckDone = usePerfomAuth();
   if (!isInitialCheckDone) {
     return <div>Loading...</div>;
   }
