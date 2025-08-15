@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import type { Project } from "../../interfaces/Project.interface";
 import { AxiosError } from "axios";
-import axiosInstance from "../../api/axios.instance";
+import projectInstance from "../../api/project.api";
 export type ProjectState = {
   isLoading: boolean;
   projects: Project[];
@@ -20,12 +20,9 @@ export const searchProjects = createAsyncThunk<
   { rejectValue: string }
 >("projects/search", async (searchString: string, { rejectWithValue }) => {
   try {
-    const response = await axiosInstance.get(
-      `${process.env.API_SERVER_URL}/api/v1.0/projects?search=${searchString}`,
-    );
+    const response = await projectInstance.searchProjects(searchString);
     return response.data;
   } catch (err: unknown) {
-    console.log(err);
     if (err instanceof AxiosError) {
       return rejectWithValue(err.response?.data.error || "Failed to fetch");
     }

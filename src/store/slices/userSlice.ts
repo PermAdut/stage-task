@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios, { AxiosError } from "axios";
+import userInstance from "../../api/user.api";
 
 export type UserState = {
   isAuthenticated: boolean;
@@ -8,7 +9,7 @@ export type UserState = {
 };
 
 const initialState: UserState = {
-  isAuthenticated: false,
+  isAuthenticated: !!localStorage.getItem("accessToken"),
   isLoading: false,
   error: null,
 };
@@ -41,18 +42,11 @@ export const registerUser = createAsyncThunk<
   "user/register",
   async (credentials: RegisterCredentials, { rejectWithValue }) => {
     try {
-      const response = await axios.post(
-        `${process.env.API_SERVER_URL}/api/v1.0/user/register`,
-        credentials,
-        { withCredentials: true },
-      );
+      const response = await userInstance.handleRegistration(credentials);
       localStorage.setItem("accessToken", response.data.accessToken);
       return response.data;
-    } catch (err: unknown) {
-      if (err instanceof AxiosError) {
-        return rejectWithValue(err.response?.data.error);
-      }
-      return rejectWithValue("Failed to login");
+    } catch (err: any) {
+      return rejectWithValue(err.response?.data.error || "Failed to login");
     }
   },
 );
@@ -63,18 +57,11 @@ export const loginUser = createAsyncThunk<
   { rejectValue: string }
 >("user/login", async (credentials: LoginCredentials, { rejectWithValue }) => {
   try {
-    const response = await axios.post(
-      `${process.env.API_SERVER_URL}/api/v1.0/user/login`,
-      credentials,
-      { withCredentials: true },
-    );
+    const response = await userInstance.handleLogin(credentials);
     localStorage.setItem("accessToken", response.data.accessToken);
     return response.data;
-  } catch (err: unknown) {
-    if (err instanceof AxiosError) {
-      return rejectWithValue(err.response?.data.error);
-    }
-    return rejectWithValue("Failed to login");
+  } catch (err: any) {
+    return rejectWithValue(err.response?.data.error || "Failed to login");
   }
 });
 
@@ -82,11 +69,7 @@ export const checkAuth = createAsyncThunk(
   "user/check",
   async (_, { rejectWithValue }) => {
     try {
-      const response = await axios.post(
-        `${process.env.API_SERVER_URL}/api/v1.0/user/refresh`,
-        {},
-        { withCredentials: true },
-      );
+      const response = await userInstance.refreshToken();
       localStorage.setItem("accessToken", response.data.accessToken);
       return response.data;
     } catch {
