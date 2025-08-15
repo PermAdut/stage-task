@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import type { Project } from "../../interfaces/Project.interface";
-import axios, { AxiosError } from "axios";
-
+import { AxiosError } from "axios";
+import axiosInstance from "../../api/axios.instance";
 export type ProjectState = {
   isLoading: boolean;
   projects: Project[];
@@ -12,14 +12,7 @@ const initialState: ProjectState = {
   projects: [],
 };
 
-const axiosInstance = axios.create();
-axiosInstance.interceptors.request.use(function (config) {
-  const token = localStorage.getItem("accessToken");
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
-  }
-  return config;
-});
+
 
 export const searchProjects = createAsyncThunk<
   Project[],
